@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,15 +16,15 @@ namespace ProjectEulerInCSharp
         /// Find the sum of all the multiples of 3 or 5 below the given limit.
         /// </summary>
         /// <param name="below"></param>
-        public Int32 SumOfMultiplesOfThreeOrFive(Int32 below)
+        public int SumOfMultiplesOfThreeOrFive(int below)
         {
             if (below < 1)
             {
                 throw new ArgumentOutOfRangeException();
             };
 
-            return Enumerable.Range(1, below - 1)
-                .Where(i => (i % 3 == 0 || i % 5 == 0))
+            return Enumerable.Range(0, below)
+                .Where(i => (i.MultipleOf(3) || i.MultipleOf(5)))
                 .Sum();
         }
     }
