@@ -27,5 +27,28 @@ namespace ProjectEulerInCSharp
                 .Where(i => (i.MultipleOf(3) || i.MultipleOf(5)))
                 .Sum();
         }
+
+        public int FibonacciNumber(int n)
+        {
+            if (n < 0) { throw new ArgumentOutOfRangeException(); }
+            if (n <= 3) { return n; }
+            return FibonacciNumber(n - 1) + FibonacciNumber(n - 2);
+        }
+
+        public int SumOfEvenFibonacciNumbers(int lowerThan)
+        {
+            if (lowerThan < 0) { throw new ArgumentOutOfRangeException(); }
+            int result = 0;
+            for (int i = 1; true; i++)
+            {
+                int fibi = FibonacciNumber(i);
+                if (fibi >= lowerThan) { break; }
+                if (fibi.MultipleOf(2))
+                {
+                    result += fibi;
+                }
+            }
+            return result;
+        }
     }
 }
