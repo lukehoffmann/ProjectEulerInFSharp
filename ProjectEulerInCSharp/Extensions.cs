@@ -9,9 +9,40 @@ namespace ProjectEulerInCSharp
     static class Extensions
     {
 
-        public static bool MultipleOf(this int i, int factor)
+        public static bool MultipleOf(this int n, int factor)
         {
-            return i % factor == 0;
+            return n % factor == 0;
+        }
+
+        public static bool MultipleOf(this long n, long factor)
+        {
+            System.Diagnostics.Debug.WriteLine(n + " / " + factor);
+            return n % factor == 0;
+        }
+
+        public static bool IsPrime(this int n)
+        {
+            for (int i = 2; i <= n / 2; i++)
+            {
+                if (n.MultipleOf(i))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+
+        public static bool IsPrime(this long n)
+        {
+            for (int i = 2; i <= n / 2; i++)
+            {
+                if (n.MultipleOf(i))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
