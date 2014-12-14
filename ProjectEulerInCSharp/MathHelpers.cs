@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProjectEulerInCSharp
 {
-    public class Solutions
+    public class MathHelpers
     {
 
         /// <summary>
@@ -28,27 +28,33 @@ namespace ProjectEulerInCSharp
                 .Sum();
         }
 
-        public int FibonacciNumber(int n)
+        public List<int> FibonacciNumbersLessThan(int limit)
         {
-            if (n < 0) { throw new ArgumentOutOfRangeException(); }
-            if (n <= 3) { return n; }
-            return FibonacciNumber(n - 1) + FibonacciNumber(n - 2);
+            if (limit < 0) { throw new ArgumentOutOfRangeException("limit", "too negative"); }
+
+            List<int> l = new List<int>();
+            l.Add(1);
+            l.Add(2);
+
+            for (int i = 2; true; i++)
+            {
+                int n = l[i - 1] + l[i - 2];
+                if (n >= limit)
+                {
+                    break;
+                }
+                l.Add(n);
+            }
+            return l;
         }
 
         public int SumOfEvenFibonacciNumbers(int lowerThan)
         {
             if (lowerThan < 0) { throw new ArgumentOutOfRangeException(); }
-            int result = 0;
-            for (int i = 1; true; i++)
-            {
-                int fibi = FibonacciNumber(i);
-                if (fibi >= lowerThan) { break; }
-                if (fibi.MultipleOf(2))
-                {
-                    result += fibi;
-                }
-            }
-            return result;
+
+            return FibonacciNumbersLessThan(lowerThan)
+                    .Where(f => f.MultipleOf(2))
+                    .Sum();
         }
     }
 }
