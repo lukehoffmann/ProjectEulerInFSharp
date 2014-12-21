@@ -16,33 +16,19 @@ namespace ProjectEulerInCSharp
 
         public static bool MultipleOf(this long n, long factor)
         {
-            System.Diagnostics.Debug.WriteLine(n + " / " + factor);
+            //System.Diagnostics.Debug.WriteLine(n + " / " + factor);
             return n % factor == 0;
         }
 
         public static bool IsPrime(this int n)
         {
-            for (int i = 2; i <= n / 2; i++)
-            {
-                if (n.MultipleOf(i))
-                {
-                    return false;
-                }
-            }
-            return true;
+            return !MathHelpers.FactorsOf(n).Any();
         }
 
 
         public static bool IsPrime(this long n)
         {
-            for (int i = 2; i <= n / 2; i++)
-            {
-                if (n.MultipleOf(i))
-                {
-                    return false;
-                }
-            }
-            return true;
+            return !MathHelpers.FactorsOf(n).Any();
         }
     }
 }

@@ -10,18 +10,20 @@ namespace ProjectEulerInCSharp
     public static class MathHelpers
     {
 
-        public static List<int> FactorsOf(long n)
+        public static List<long> FactorsOf(long n)
         {
-            List<int> l = new List<int>();
+            List<long> l = new List<long>();
+            long limit = (long)Math.Sqrt(n) + 1;
 
-            for (int i = 2; i <= n / 2; i++)
+            for (int i = 2; i <= limit; i++)
             {
                 if (n.MultipleOf(i))
                 {
                     l.Add(i);
+                    l.Add(n / i);
                 }
             }
-            return l;
+            return l.Distinct().ToList();
         }
 
         /// <summary>
@@ -52,40 +54,9 @@ namespace ProjectEulerInCSharp
             return l;
         }
 
-        public static long LargestPrimeFactorOf(long n)
+        public static List<long> PrimeFactorsOf(long n)
         {
-            List<int> l = new List<int>();
-            Dictionary<int, bool> primes = new Dictionary<int, bool>();
-
-            for (long i = n / 2; i >= 2; i--)
-            {
-                if (n.MultipleOf(i))
-                {
-                    if (i.IsPrime())
-                    {
-                       return i;
-                    }
-                }
-            }
-            return -1;
-        }
-
-        public static List<int> PrimeFactorsOf(long n)
-        {
-            List<int> l = new List<int>();
-            Dictionary<int, bool> primes = new Dictionary<int, bool>();
-
-            for (int i = 2; i <= n / 2; i++)
-            {
-                if (n.MultipleOf(i))
-                {
-                    if (i.IsPrime())
-                    {
-                        l.Add(i);
-                    }
-                }
-            }
-            return l;
+            return MathHelpers.FactorsOf(n).Where(f => f.IsPrime()).ToList();
         }
 
     }

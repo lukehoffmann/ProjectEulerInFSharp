@@ -50,16 +50,16 @@ namespace ProjectEulerTests
         [TestMethod]
         public void Problem3Example()
         {
-             List<int> result = EulerProblems.Problem3Example();
+            List<long> result = EulerProblems.Problem3Example();
 
             //The prime factors of 13195 are 5, 7, 13 and 29.
-           Assert.AreEqual(4, result.Count);
+            Assert.AreEqual(4, result.Count);
             Assert.IsTrue(result.Contains(5));
             Assert.IsTrue(result.Contains(7));
             Assert.IsTrue(result.Contains(13));
             Assert.IsTrue(result.Contains(29));
         }
-        
+
         [TestMethod]
         public void Problem3Solution()
         {

@@ -46,7 +46,7 @@ namespace ProjectEulerInCSharp
         /// <summary>
         /// The prime factors of 13195 are 5, 7, 13 and 29.
         /// </summary>
-        public static List<int> Problem3Example()
+        public static List<long> Problem3Example()
         {
             return MathHelpers.PrimeFactorsOf(13195).ToList();
         }
@@ -56,7 +56,7 @@ namespace ProjectEulerInCSharp
         /// </summary>
         public static long Problem3Solution()
         {
-            return MathHelpers.LargestPrimeFactorOf(600851475143);
+            return MathHelpers.PrimeFactorsOf(600851475143).Max();
        }
     }
 }
