@@ -59,5 +59,21 @@ namespace ProjectEulerInCSharp
             return MathHelpers.FactorsOf(n).Where(f => f.IsPrime()).ToList();
         }
 
+
+        internal static List<long> ProductsOfXDigitNumbers(int x)
+        {
+            int start = (int)Math.Pow(10, x - 1);
+            int end = (int)Math.Pow(10, x) - 1;
+
+            List<long> products = new List<long>();
+            for (long i = start; i <= end; i++)
+            {
+                for (long j = start; j <= end; j++)
+                {
+                    products.Add(i * j);
+                }
+            }
+            return products;
+        }
     }
 }

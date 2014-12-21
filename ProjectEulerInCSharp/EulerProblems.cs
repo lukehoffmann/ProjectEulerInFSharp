@@ -57,6 +57,27 @@ namespace ProjectEulerInCSharp
         public static long Problem3Solution()
         {
             return MathHelpers.PrimeFactorsOf(600851475143).Max();
-       }
+        }
+
+        /// <summary>
+        /// A palindromic number reads the same both ways. 
+        /// The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
+        /// </summary>
+        public static long Problem4Example()
+        {
+            return MathHelpers.ProductsOfXDigitNumbers(2)
+                .Where(p => p.IsPalindromic())
+                .Max();
+        }
+
+        /// <summary>
+        /// Find the largest palindrome made from the product of two 3-digit numbers.
+        /// </summary>
+        public static long Problem4Solution()
+        {
+            return MathHelpers.ProductsOfXDigitNumbers(3)
+                .Where(p => p.IsPalindromic())
+                .Max();
+        }
     }
 }

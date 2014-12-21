@@ -73,5 +73,27 @@ namespace ProjectEulerTests
             Assert.AreEqual(6857, result);
         }
 
+        [TestMethod]
+        public void Problem4Example()
+        {
+            long result = EulerProblems.Problem4Example();
+
+            //The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
+            Assert.AreEqual(9009, result);
+        }
+
+        [TestMethod]
+        public void Problem4Solution()
+        {
+            //Find the largest palindrome made from the product of two 3-digit numbers.
+            Stopwatch watch = Stopwatch.StartNew();
+            long result = EulerProblems.Problem4Solution();
+
+            watch.Stop();
+            Console.WriteLine(String.Format("Problem {0} = {1}  ({2}ms)", 4, result, watch.ElapsedMilliseconds));
+
+            Assert.AreEqual(906609, result);
+        }
+
     }
 }

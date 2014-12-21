@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectEulerInCSharp
 {
-    static class Extensions
+    public static class Extensions
     {
 
         public static bool MultipleOf(this int n, int factor)
@@ -20,15 +20,23 @@ namespace ProjectEulerInCSharp
             return n % factor == 0;
         }
 
-        public static bool IsPrime(this int n)
+        public static bool IsPalindromic(this long n)
         {
-            return !MathHelpers.FactorsOf(n).Any();
+            return n.ToString().Reverse() == n.ToString();
         }
-
 
         public static bool IsPrime(this long n)
         {
             return !MathHelpers.FactorsOf(n).Any();
+        }
+
+        public static string Reverse(this string s)
+        {
+            if (s == null) return null;
+
+            char[] charArray = s.ToCharArray();
+            Array.Reverse(charArray);
+            return new string(charArray);
         }
     }
 }
