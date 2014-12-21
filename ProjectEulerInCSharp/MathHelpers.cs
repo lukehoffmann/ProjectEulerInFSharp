@@ -10,20 +10,34 @@ namespace ProjectEulerInCSharp
     public static class MathHelpers
     {
 
-        public static List<long> FactorsOf(long n)
+        /// <summary>
+        /// Unordered factors of the given number, including one and the number itself.
+        /// </summary>
+        public static List<int> FactorsOf(int n)
         {
-            List<long> l = new List<long>();
+            return MathHelpers.FactorsOf((long)n);
+        }
+
+        /// <summary>
+        /// Unordered factors of the given number, including one and the number itself.
+        /// </summary>
+        public static List<int> FactorsOf(long n)
+        {
+            List<int> l = new List<int>();
             long limit = (long)Math.Sqrt(n) + 1;
 
-            for (int i = 2; i <= limit; i++)
+            for (int i = 1; i <= limit; i++)
             {
                 if (n.MultipleOf(i))
                 {
                     l.Add(i);
-                    l.Add(n / i);
+                    l.Add((int)(n / i));
                 }
             }
-            return l.Distinct().ToList();
+            l = l.Distinct().ToList();
+            l.Remove(1);
+            l.Remove((int)n);
+            return l;
         }
 
         /// <summary>
@@ -54,21 +68,21 @@ namespace ProjectEulerInCSharp
             return l;
         }
 
-        public static List<long> PrimeFactorsOf(long n)
+        public static List<int> PrimeFactorsOf(long n)
         {
             return MathHelpers.FactorsOf(n).Where(f => f.IsPrime()).ToList();
         }
 
 
-        internal static List<long> ProductsOfXDigitNumbers(int x)
+        internal static List<int> ProductsOfXDigitNumbers(int x)
         {
             int start = (int)Math.Pow(10, x - 1);
             int end = (int)Math.Pow(10, x) - 1;
 
-            List<long> products = new List<long>();
-            for (long i = start; i <= end; i++)
+            List<int> products = new List<int>();
+            for (int i = start; i <= end; i++)
             {
-                for (long j = start; j <= end; j++)
+                for (int j = start; j <= end; j++)
                 {
                     products.Add(i * j);
                 }

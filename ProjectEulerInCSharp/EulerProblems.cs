@@ -46,7 +46,7 @@ namespace ProjectEulerInCSharp
         /// <summary>
         /// The prime factors of 13195 are 5, 7, 13 and 29.
         /// </summary>
-        public static List<long> Problem3Example()
+        public static List<int> Problem3Example()
         {
             return MathHelpers.PrimeFactorsOf(13195).ToList();
         }
@@ -63,7 +63,7 @@ namespace ProjectEulerInCSharp
         /// A palindromic number reads the same both ways. 
         /// The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
         /// </summary>
-        public static long Problem4Example()
+        public static int Problem4Example()
         {
             return MathHelpers.ProductsOfXDigitNumbers(2)
                 .Where(p => p.IsPalindromic())
@@ -73,11 +73,41 @@ namespace ProjectEulerInCSharp
         /// <summary>
         /// Find the largest palindrome made from the product of two 3-digit numbers.
         /// </summary>
-        public static long Problem4Solution()
+        public static int Problem4Solution()
         {
             return MathHelpers.ProductsOfXDigitNumbers(3)
                 .Where(p => p.IsPalindromic())
                 .Max();
+        }
+
+        /// <summary>
+        /// 2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
+        /// </summary>
+        public static int Problem5Example()
+        {
+            List<int> factors = Enumerable.Range(1, 10).ToList();
+            for (int product = 10; true; product++)
+            {
+                if (factors.All(f => product.MultipleOf(f)))
+                {
+                    return product;
+                }
+            }
+        }
+
+        /// <summary>
+        /// What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
+        /// </summary>
+        public static int Problem5Solution()
+        {
+            List<int> factors = Enumerable.Range(1, 20).ToList();
+            for (int product = 20; true; product++)
+            {
+                if (!factors.Any(f => !product.MultipleOf(f)))
+                {
+                    return product;
+                }
+            }
         }
     }
 }

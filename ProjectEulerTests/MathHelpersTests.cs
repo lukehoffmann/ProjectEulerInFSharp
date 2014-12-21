@@ -8,8 +8,38 @@ using System.Linq;
 namespace ProjectEulerTests
 {
     [TestClass]
-    public class MathTests
+    public class MathHelpersTests
     {
+
+        [TestMethod]
+        public void TestFactorsOf()
+        {
+            List<int> result;
+
+            result = MathHelpers.FactorsOf(1);
+            Assert.AreEqual(0, result.Count());
+            Assert.IsFalse(result.Contains(1));
+
+            result = MathHelpers.FactorsOf(2);
+            Assert.AreEqual(0, result.Count());
+            Assert.IsFalse(result.Contains(1));
+            Assert.IsFalse(result.Contains(2));
+
+            result = MathHelpers.FactorsOf(3);
+            Assert.AreEqual(0, result.Count());
+            Assert.IsFalse(result.Contains(1));
+            Assert.IsFalse(result.Contains(2));
+            Assert.IsFalse(result.Contains(3));
+
+            result = MathHelpers.FactorsOf(12);
+            Assert.AreEqual(4, result.Count());
+            Assert.IsFalse(result.Contains(1));
+            Assert.IsTrue(result.Contains(6));
+            Assert.IsFalse(result.Contains(12));
+
+            result = MathHelpers.FactorsOf(232792560);
+          
+        }
 
         [TestMethod]
         public void FibonacciNumbersTest()

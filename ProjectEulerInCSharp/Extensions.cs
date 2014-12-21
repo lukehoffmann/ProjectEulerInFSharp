@@ -20,14 +20,14 @@ namespace ProjectEulerInCSharp
             return n % factor == 0;
         }
 
-        public static bool IsPalindromic(this long n)
+        public static bool IsPalindromic(this int n)
         {
             return n.ToString().Reverse() == n.ToString();
         }
 
-        public static bool IsPrime(this long n)
+        public static bool IsPrime(this int n)
         {
-            return !MathHelpers.FactorsOf(n).Any();
+            return MathHelpers.FactorsOf(n).Count() == 0;
         }
 
         public static string Reverse(this string s)
