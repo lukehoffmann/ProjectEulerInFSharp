@@ -85,14 +85,14 @@ namespace ProjectEulerInCSharp
         /// </summary>
         public static int Problem5Example()
         {
-            List<int> factors = Enumerable.Range(1, 10).ToList();
-            for (int product = 10; true; product++)
-            {
-                if (factors.All(f => product.MultipleOf(f)))
-                {
-                    return product;
-                }
-            }
+            IEnumerable<int> factors = Enumerable.Range(1, 10);
+            int product = 0;
+
+            do { 
+                product += 10; 
+            } while (factors.Any(factor => !product.MultipleOf(factor)));
+
+            return product;
         }
 
         /// <summary>
@@ -100,14 +100,15 @@ namespace ProjectEulerInCSharp
         /// </summary>
         public static int Problem5Solution()
         {
-            List<int> factors = Enumerable.Range(1, 20).ToList();
-            for (int product = 20; true; product++)
+            IEnumerable<int> factors = Enumerable.Range(1, 20);
+            int product = 0;
+
+            do
             {
-                if (!factors.Any(f => !product.MultipleOf(f)))
-                {
-                    return product;
-                }
-            }
+                product += 20;
+            } while (factors.Any(factor => !product.MultipleOf(factor)));
+
+            return product;
         }
     }
 }

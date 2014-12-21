@@ -76,7 +76,7 @@ namespace ProjectEulerTests
             //Find the largest palindrome made from the product of two 3-digit numbers.
             int result = EulerProblems.Problem4Solution();
 
-            Console.WriteLine(String.Format("Problem {0} = {1})", 4, result));
+            Console.WriteLine(String.Format("Problem {0} = {1}", 4, result));
             Assert.AreEqual(906609, result);
         }
 
@@ -94,7 +94,7 @@ namespace ProjectEulerTests
             //What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
             int result = EulerProblems.Problem5Solution();
 
-            Console.WriteLine(String.Format("Problem {0} = {1})", 5, result));
+            Console.WriteLine(String.Format("Problem {0} = {1}", 5, result));
             Assert.AreEqual(232792560, result);
         }
 
