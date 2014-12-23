@@ -38,7 +38,7 @@ namespace ProjectEulerInCSharp
         /// </summary>
         public static int Problem2Solution()
         {
-            return MathHelpers.FibonacciNumbersLessThan(4000000)
+            return MathHelpers.FibonacciNumbersUpTo(4000000)
                     .Where(f => f.MultipleOf(2))
                     .Sum();
         }
@@ -65,7 +65,7 @@ namespace ProjectEulerInCSharp
         /// </summary>
         public static int Problem4Example()
         {
-            return MathHelpers.ProductsOfXDigitNumbers(2)
+            return MathHelpers.AllProductsOfXDigitNumbers(2)
                 .Where(p => p.IsPalindromic())
                 .Max();
         }
@@ -75,7 +75,7 @@ namespace ProjectEulerInCSharp
         /// </summary>
         public static int Problem4Solution()
         {
-            return MathHelpers.ProductsOfXDigitNumbers(3)
+            return MathHelpers.AllProductsOfXDigitNumbers(3)
                 .Where(p => p.IsPalindromic())
                 .Max();
         }
@@ -85,11 +85,13 @@ namespace ProjectEulerInCSharp
         /// </summary>
         public static int Problem5Example()
         {
-            IEnumerable<int> factors = Enumerable.Range(1, 10);
+            int upTo = 10;
+            IEnumerable<int> factors = Enumerable.Range(1, upTo);
             int product = 0;
 
-            do { 
-                product += 10; 
+            do
+            {
+                product += upTo;
             } while (factors.Any(factor => !product.MultipleOf(factor)));
 
             return product;
@@ -100,15 +102,52 @@ namespace ProjectEulerInCSharp
         /// </summary>
         public static int Problem5Solution()
         {
-            IEnumerable<int> factors = Enumerable.Range(1, 20);
+            int upTo = 20;
+            IEnumerable<int> factors = Enumerable.Range(1, upTo);
             int product = 0;
 
             do
             {
-                product += 20;
+                product += upTo;
             } while (factors.Any(factor => !product.MultipleOf(factor)));
 
             return product;
+        }
+
+        /// <summary>
+        /// The sum of the squares of the first ten natural numbers is 385
+        /// The square of the sum of the first ten natural numbers is 3025
+        /// Hence the difference between the sum of the squares of the first ten natural numbers and the square of the sum is 3025 − 385 = 2640.
+        /// </summary>
+        public static int Problem6Example()
+        {
+            int upTo = 10;
+
+            int sum = Enumerable.Range(1, upTo).Sum();
+            int squareOfSum = sum * sum;
+           
+            int sumOfSquares = Enumerable.Range(1, upTo)
+                               .Select(i => i * i)
+                               .Sum();
+
+            return Math.Abs(sumOfSquares - squareOfSum);
+        }
+
+        /// <summary>
+        /// Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
+        /// </summary>
+        public static long Problem6Solution()
+        {
+            int upTo = 100;
+
+            int sum = Enumerable.Range(1, upTo).Sum();
+            int squareOfSum = sum * sum;
+
+            int sumOfSquares = Enumerable.Range(1, upTo)
+                               .Select(i => i * i)
+                               .Sum();
+
+            return Math.Abs(sumOfSquares - squareOfSum);
         }
     }
 }

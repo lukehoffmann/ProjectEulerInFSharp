@@ -48,46 +48,43 @@ namespace ProjectEulerInCSharp
         /// </summary>
         /// <param name="limit"></param>
         /// <returns>An ordered collection containing part of the Fibonacci sequence.</returns>
-        public static List<int> FibonacciNumbersLessThan(int limit)
+        public static List<int> FibonacciNumbersUpTo(int limit)
         {
             if (limit < 0) { throw new ArgumentOutOfRangeException("limit", "too negative"); }
 
-            List<int> l = new List<int>();
-            l.Add(1);
-            l.Add(2);
-
-            for (int i = 2; true; i++)
+            List<int> l = new List<int>() { 1, 2 };
+            do
             {
-                int n = l[i - 1] + l[i - 2];
-                if (n >= limit)
-                {
-                    break;
-                }
-                l.Add(n);
-            }
+                l.Add(l[l.Count - 1] + l[l.Count - 2]);
+
+            } while (l[l.Count - 1] <= limit);
+
             return l;
         }
 
+        /// <summary>
+        /// An unordered list containing the number's factors that are prime numbers.
+        /// </summary>
         public static List<int> PrimeFactorsOf(long n)
         {
-            return MathHelpers.FactorsOf(n).Where(f => f.IsPrime()).ToList();
+            return MathHelpers.FactorsOf(n)
+                .Where(f => f.IsPrime())
+                .ToList();
         }
 
 
-        internal static List<int> ProductsOfXDigitNumbers(int x)
+        internal static List<int> AllProductsOfXDigitNumbers(int xDigits)
         {
-            int start = (int)Math.Pow(10, x - 1);
-            int end = (int)Math.Pow(10, x) - 1;
-
+            int start = (int)Math.Pow(10, xDigits - 1); // e.g. when x is 3 > 10^(3 - 1) = 100
+            int end = (int)Math.Pow(10, xDigits) - 1;   // e.g. when x is 3 > (10^3) - 1 = 999
+            int count = end - start + 1;
+            
+            List<int> range = Enumerable.Range(start, count).ToList();
             List<int> products = new List<int>();
-            for (int i = start; i <= end; i++)
-            {
-                for (int j = start; j <= end; j++)
-                {
-                    products.Add(i * j);
-                }
-            }
-            return products;
+
+            range.ForEach(i => range.ForEach(j => products.Add(i * j)));
+
+            return products.Distinct().ToList();
         }
     }
 }
