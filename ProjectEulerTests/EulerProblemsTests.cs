@@ -134,5 +134,23 @@ namespace ProjectEulerTests
             Assert.AreEqual(104743, result);
         }
 
+        [TestMethod]
+        public void Problem8Example()
+        {
+            // The four adjacent digits in the 1000-digit number that have the greatest product are 9 × 9 × 8 × 9 = 5832.
+            int result = EulerProblems.Problem8Example();
+            Assert.AreEqual(5832, result);
+        }
+
+        [TestMethod]
+        public void Problem8Solution()
+        {
+            // Find the thirteen adjacent digits in the 1000-digit number that have the greatest product. What is the value of this product?
+            int result = EulerProblems.Problem8Solution();
+
+            Console.WriteLine(String.Format("Problem {0} = {1}", 8, result));
+            Assert.AreEqual(333, result);
+        }
+
     }
 }

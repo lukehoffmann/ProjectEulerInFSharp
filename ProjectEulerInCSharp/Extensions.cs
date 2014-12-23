@@ -9,15 +9,9 @@ namespace ProjectEulerInCSharp
     public static class Extensions
     {
 
-        public static bool MultipleOf(this int n, int factor)
+        public static int DigitAtPosition(this string s, int position)
         {
-            return n % factor == 0;
-        }
-
-        public static bool MultipleOf(this long n, long factor)
-        {
-            //System.Diagnostics.Debug.WriteLine(n + " / " + factor);
-            return n % factor == 0;
+            return int.Parse(s[position].ToString());
         }
 
         public static bool IsPalindromic(this int n)
@@ -29,6 +23,17 @@ namespace ProjectEulerInCSharp
         {
             if (n == 0 || n == 1) { return false; }
             return MathHelpers.FactorsOf(n).Count() == 0;
+        }
+
+        public static bool MultipleOf(this int n, int factor)
+        {
+            return n % factor == 0;
+        }
+
+        public static bool MultipleOf(this long n, long factor)
+        {
+            //System.Diagnostics.Debug.WriteLine(n + " / " + factor);
+            return n % factor == 0;
         }
 
         public static string Reverse(this string s)
