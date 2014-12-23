@@ -116,5 +116,23 @@ namespace ProjectEulerTests
             Assert.AreEqual(25164150, result);
         }
 
+        [TestMethod]
+        public void Problem7Example()
+        {
+            // By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.
+            int result = EulerProblems.Problem7Example();
+            Assert.AreEqual(13, result);
+        }
+
+        [TestMethod]
+        public void Problem7Solution()
+        {
+            // Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
+            int result = EulerProblems.Problem7Solution();
+
+            Console.WriteLine(String.Format("Problem {0} = {1}", 7, result));
+            Assert.AreEqual(104743, result);
+        }
+
     }
 }

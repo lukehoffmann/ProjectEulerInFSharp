@@ -10,6 +10,20 @@ namespace ProjectEulerInCSharp
     public static class MathHelpers
     {
 
+        public static List<int> AllProductsOfXDigitNumbers(int xDigits)
+        {
+            int start = (int)Math.Pow(10, xDigits - 1); // e.g. when x is 3 > 10^(3 - 1) = 100
+            int end = (int)Math.Pow(10, xDigits) - 1;   // e.g. when x is 3 > (10^3) - 1 = 999
+            int count = end - start + 1;
+            
+            List<int> range = Enumerable.Range(start, count).ToList();
+            List<int> products = new List<int>();
+
+            range.ForEach(i => range.ForEach(j => products.Add(i * j)));
+
+            return products.Distinct().ToList();
+        }
+
         /// <summary>
         /// Unordered factors of the given number, including one and the number itself.
         /// </summary>
@@ -46,7 +60,6 @@ namespace ProjectEulerInCSharp
         ///1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
         ///Return a list of all Fibonacci terms less that the given limit.
         /// </summary>
-        /// <param name="limit"></param>
         /// <returns>An ordered collection containing part of the Fibonacci sequence.</returns>
         public static List<int> FibonacciNumbersUpTo(int limit)
         {
@@ -72,19 +85,20 @@ namespace ProjectEulerInCSharp
                 .ToList();
         }
 
+        /// <summary>
+        /// The nth prime number, counting up from 2.
+        /// </summary>
+         public static int NthPrime(int n)
+         {
+            int i = 1, primes = 0;
+            do
+            {
+                i++;
+                if (i.IsPrime()) { primes += 1; }
+            } while (primes < n);
 
-        internal static List<int> AllProductsOfXDigitNumbers(int xDigits)
-        {
-            int start = (int)Math.Pow(10, xDigits - 1); // e.g. when x is 3 > 10^(3 - 1) = 100
-            int end = (int)Math.Pow(10, xDigits) - 1;   // e.g. when x is 3 > (10^3) - 1 = 999
-            int count = end - start + 1;
-            
-            List<int> range = Enumerable.Range(start, count).ToList();
-            List<int> products = new List<int>();
-
-            range.ForEach(i => range.ForEach(j => products.Add(i * j)));
-
-            return products.Distinct().ToList();
+            return i;
         }
+
     }
 }

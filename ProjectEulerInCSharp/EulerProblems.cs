@@ -125,7 +125,7 @@ namespace ProjectEulerInCSharp
 
             int sum = Enumerable.Range(1, upTo).Sum();
             int squareOfSum = sum * sum;
-           
+
             int sumOfSquares = Enumerable.Range(1, upTo)
                                .Select(i => i * i)
                                .Sum();
@@ -148,6 +148,22 @@ namespace ProjectEulerInCSharp
                                .Sum();
 
             return Math.Abs(sumOfSquares - squareOfSum);
+        }
+
+        /// <summary>
+        /// By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.
+        /// </summary>
+        public static int Problem7Example()
+        {
+            return MathHelpers.NthPrime(6);
+        }
+
+        /// <summary>
+        /// What is the 10001st prime number?
+        /// </summary>
+        public static int Problem7Solution()
+        {
+            return MathHelpers.NthPrime(10001);
         }
     }
 }

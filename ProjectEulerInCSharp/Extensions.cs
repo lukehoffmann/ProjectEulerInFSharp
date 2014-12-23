@@ -27,6 +27,7 @@ namespace ProjectEulerInCSharp
 
         public static bool IsPrime(this int n)
         {
+            if (n == 0 || n == 1) { return false; }
             return MathHelpers.FactorsOf(n).Count() == 0;
         }
 
