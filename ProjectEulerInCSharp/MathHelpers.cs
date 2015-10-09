@@ -87,14 +87,9 @@
         /// </summary>
          public static int NthPrime(int n)
          {
-            int i = 1, primes = 0;
-            do
-            {
-                i++;
-                if (i.IsPrime()) { primes += 1; }
-            } while (primes < n);
-
-            return i;
+            var nPrimes = CalculatePrimes(primes => primes.Count() < n);
+            
+            return nPrimes[n - 1];
         }
 
         /// <summary>
@@ -106,6 +101,35 @@
             return Math.Pow(a, 2) + Math.Pow(b, 2) == Math.Pow(c, 2);
         }
 
+        /// <summary>
+        /// The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
+        /// </summary>
+        public static long SumOfPrimesBelow(int below)
+        {
+            if (below < 2) throw new ArgumentException("below", "too small for primes");
 
+            var primesBelow = CalculatePrimes(primes => primes.Max() < below);
+
+            // re-filter to remove the last prime
+            return primesBelow.Where(p => p < below).Sum();
+        }
+
+        private static IList<int> CalculatePrimes(Func<IList<int>, bool> whileCondition)
+        {
+            var primes = new List<int>();
+            int candidate = 2;
+
+            do
+            {
+                if (primes.Where(p => p < Math.Sqrt(candidate)).All(p => candidate % p != 0))
+                {
+                    primes.Add(candidate);
+                }
+
+                candidate++;
+            } while (whileCondition(primes));
+
+            return primes;
+        }
     }
 }

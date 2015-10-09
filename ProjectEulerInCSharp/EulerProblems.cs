@@ -236,7 +236,7 @@
                 {
                     for (c = b; c < 998; ++c)
                     {
-                        if (a + b + c == 1000 
+                        if (a + b + c == 1000
                             && MathHelpers.IsPythagoreanTriplet(a, b, c))
                         {
                             return a * b * c;
@@ -246,6 +246,15 @@
             }
 
             return 0;
+        }
+
+        /// <summary>
+        /// The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
+        /// Find the sum of all the primes below two million.
+        /// </summary>
+        public static long Problem10Solution()
+        {
+            return MathHelpers.SumOfPrimesBelow(2000000);
         }
 
     }

@@ -75,6 +75,13 @@ namespace ProjectEulerInCSharp.Tests
         {
             Assert.IsTrue(MathHelpers.IsPythagoreanTriplet(3, 4, 5));
         }
+
+        [TestMethod()]
+        public void SumOfPrimesBelowTest()
+        {
+            // The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
+            Assert.AreEqual(17, MathHelpers.SumOfPrimesBelow(10));
+        }
     }
 
 }

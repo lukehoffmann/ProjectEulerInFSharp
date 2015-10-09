@@ -162,5 +162,16 @@
             Assert.AreEqual(31875000, result);
         }
 
+        [TestMethod]
+        public void Problem10Solution()
+        {
+            // There exists exactly one Pythagorean triplet for which a + b + c = 1000.
+            // Find the product abc.
+            var result = EulerProblems.Problem10Solution();
+
+            Console.WriteLine(String.Format("Problem {0} = {1}", 10, result));
+            Assert.AreEqual(31875000, result);
+        }
+
     }
 }
