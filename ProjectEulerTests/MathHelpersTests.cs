@@ -1,4 +1,7 @@
-﻿namespace ProjectEulerInCSharp.Tests
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ProjectEulerInCSharp;
+
+namespace ProjectEulerInCSharp.Tests
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -67,6 +70,11 @@
             Assert.AreEqual(29, result);
         }
 
+        [TestMethod()]
+        public void IsPythagoreanTripletTest()
+        {
+            Assert.IsTrue(MathHelpers.IsPythagoreanTriplet(3, 4, 5));
+        }
     }
 
 }

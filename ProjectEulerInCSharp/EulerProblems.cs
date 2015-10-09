@@ -197,7 +197,7 @@
 
             for (int i = 0; i + n <= l; i++)
             {
-                int product = Enumerable.Range(i, n).ToList().Aggregate(1, (j, k) => j * data.DigitAtPosition(k));
+                int product = Enumerable.Range(i, n).Aggregate(1, (j, k) => j * data.DigitAtPosition(k));
                 max = Math.Max(max, product);
             }
 
@@ -215,11 +215,37 @@
 
             for (int i = 0; i + n <= l; i++)
             {
-                long product = Enumerable.Range(i, n).ToList().Aggregate(1L, (j, k) => j * data.DigitAtPosition(k));
+                long product = Enumerable.Range(i, n).Aggregate(1L, (j, k) => j * data.DigitAtPosition(k));
                 max = Math.Max(max, product);
             }
 
             return max;
+        }
+
+        /// <summary>
+        /// There exists exactly one Pythagorean triplet for which a + b + c = 1000.
+        /// Find the product abc.
+        /// </summary>
+        public static long Problem9Solution()
+        {
+            int a, b, c;
+
+            for (a = 1; a < 998; ++a)
+            {
+                for (b = a; b < 998; ++b)
+                {
+                    for (c = b; c < 998; ++c)
+                    {
+                        if (a + b + c == 1000 
+                            && MathHelpers.IsPythagoreanTriplet(a, b, c))
+                        {
+                            return a * b * c;
+                        }
+                    }
+                }
+            }
+
+            return 0;
         }
 
     }
