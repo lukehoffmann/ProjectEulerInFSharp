@@ -1,4 +1,4 @@
-﻿namespace ProjectEulerTests
+﻿namespace ProjectEulerInCSharp.Tests
 {
     using System.Collections.Generic;
     using System.Linq;

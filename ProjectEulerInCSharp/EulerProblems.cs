@@ -207,15 +207,15 @@
         /// <summary>
         /// Find the thirteen adjacent digits in the 1000-digit number that have the greatest product. What is the value of this product?
         /// </summary>
-        public static int Problem8Solution()
+        public static long Problem8Solution()
         {
             string data = EulerProblems.Problem8Data;
             int n = 13, l = data.Length;
-            int max = 0;
+            long max = 0;
 
             for (int i = 0; i + n <= l; i++)
             {
-                int product = Enumerable.Range(i, n).ToList().Aggregate(1, (j, k) => j * data.DigitAtPosition(k));
+                long product = Enumerable.Range(i, n).ToList().Aggregate(1L, (j, k) => j * data.DigitAtPosition(k));
                 max = Math.Max(max, product);
             }
 

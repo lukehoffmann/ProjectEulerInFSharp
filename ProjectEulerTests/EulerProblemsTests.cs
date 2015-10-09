@@ -1,4 +1,4 @@
-﻿namespace ProjectEulerTests
+﻿namespace ProjectEulerInCSharp.Tests
 {
     using System;
     using System.Collections.Generic;
@@ -145,10 +145,10 @@
         public void Problem8Solution()
         {
             // Find the thirteen adjacent digits in the 1000-digit number that have the greatest product. What is the value of this product?
-            int result = EulerProblems.Problem8Solution();
+            var result = EulerProblems.Problem8Solution();
 
             Console.WriteLine(String.Format("Problem {0} = {1}", 8, result));
-            Assert.AreEqual(333, result);
+            Assert.AreEqual(23514624000, result);
         }
 
     }

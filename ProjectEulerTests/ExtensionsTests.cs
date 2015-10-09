@@ -1,11 +1,24 @@
-﻿namespace ProjectEulerTests
+﻿namespace ProjectEulerInCSharp.Tests
 {
+    
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using ProjectEulerInCSharp;
 
-    [TestClass]
+    [TestClass()]
     public class ExtensionsTests
     {
+        [TestMethod()]
+        public void DigitAtPositionTest()
+        {
+            var testString = "983475908732";
+            Assert.AreEqual(7, Extensions.DigitAtPosition(testString, 4));
+            Assert.AreEqual(0, Extensions.DigitAtPosition(testString, 7));
+            Assert.AreEqual(8, Extensions.DigitAtPosition(testString, 1));
+            Assert.AreEqual(5, Extensions.DigitAtPosition(testString, 5));
+            Assert.AreEqual(9, Extensions.DigitAtPosition(testString, 6));
+            Assert.AreEqual(7, Extensions.DigitAtPosition(testString, 9));
+        }
+    
         [TestMethod]
         public void IsPalindromicTest()
         {
