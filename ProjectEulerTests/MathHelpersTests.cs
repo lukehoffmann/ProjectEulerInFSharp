@@ -1,12 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ProjectEulerInCSharp;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-
-namespace ProjectEulerTests
+﻿namespace ProjectEulerTests
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using ProjectEulerInCSharp;
+
     [TestClass]
     public class MathHelpersTests
     {
@@ -38,7 +36,6 @@ namespace ProjectEulerTests
             Assert.IsFalse(result.Contains(12));
 
             result = MathHelpers.FactorsOf(232792560);
-          
         }
 
         [TestMethod]
@@ -58,7 +55,6 @@ namespace ProjectEulerTests
             Assert.AreEqual(34, result[7]);
             Assert.AreEqual(55, result[8]);
             Assert.AreEqual(89, result[9]);
-
         }
 
         [TestMethod]

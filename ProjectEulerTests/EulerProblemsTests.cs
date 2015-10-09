@@ -1,11 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ProjectEulerInCSharp;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-
-namespace ProjectEulerTests
+﻿namespace ProjectEulerTests
 {
+    using System;
+    using System.Collections.Generic;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using ProjectEulerInCSharp;
+
     [TestClass]
     public class EulerProblemsTests
     {

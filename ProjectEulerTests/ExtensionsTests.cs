@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ProjectEulerInCSharp;
-
-namespace ProjectEulerTests
+﻿namespace ProjectEulerTests
 {
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using ProjectEulerInCSharp;
+
     [TestClass]
     public class ExtensionsTests
     {
