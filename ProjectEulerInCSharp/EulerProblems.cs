@@ -1,4 +1,4 @@
-namespace ProjectEulerInCSharp
+﻿namespace ProjectEulerInCSharp
 {
     using System;
     using System.Collections.Generic;
@@ -83,16 +83,8 @@ namespace ProjectEulerInCSharp
         /// </summary>
         public static int Problem5Example()
         {
-            int upTo = 10;
-            IEnumerable<int> factors = Enumerable.Range(1, upTo);
-            int product = 0;
-
-            do
-            {
-                product += upTo;
-            } while (factors.Any(factor => !product.MultipleOf(factor)));
-
-            return product;
+            var factors = Enumerable.Range(1, 10);
+            return MathHelpers.SmallestMultipleOfAllFactors(factors);
         }
 
         /// <summary>
@@ -100,16 +92,8 @@ namespace ProjectEulerInCSharp
         /// </summary>
         public static int Problem5Solution()
         {
-            int upTo = 20;
-            IEnumerable<int> factors = Enumerable.Range(1, upTo);
-            int product = 0;
-
-            do
-            {
-                product += upTo;
-            } while (factors.Any(factor => !product.MultipleOf(factor)));
-
-            return product;
+            var factors = Enumerable.Range(1, 20);
+            return MathHelpers.SmallestMultipleOfAllFactors(factors);
         }
 
         /// <summary>

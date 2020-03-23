@@ -1,4 +1,4 @@
-namespace ProjectEulerInCSharp
+﻿namespace ProjectEulerInCSharp
 {
     using System;
     using System.Collections.Generic;
@@ -19,6 +19,26 @@ namespace ProjectEulerInCSharp
             range.ForEach(i => range.ForEach(j => products.Add(i * j)));
 
             return products.Distinct().ToList();
+        }
+
+        public static int SmallestMultipleOfAllFactors(IEnumerable<int> factors)
+        {
+            // Find the non-redundant factors (remove smaller factors of the larger ones)
+            var uniqueFactors = factors.Distinct().ToList();
+            foreach (var f1 in factors)
+                uniqueFactors.RemoveAll(f2 => f1 > f2 && f1 % f2 == 0);
+
+            // start with the highest common factor
+            var highest = uniqueFactors.Max();
+
+            int product = highest;
+            do
+            {
+                // multiply by this factor until divisible by all others
+                product += highest;
+            } while (uniqueFactors.Any(factor => !product.MultipleOf(factor)));
+
+            return product;
         }
 
         /// <summary>
