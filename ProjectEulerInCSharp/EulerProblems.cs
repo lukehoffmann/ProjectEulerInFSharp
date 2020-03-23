@@ -1,4 +1,4 @@
-﻿namespace ProjectEulerInCSharp
+namespace ProjectEulerInCSharp
 {
     using System;
     using System.Collections.Generic;
@@ -151,7 +151,7 @@
         /// <summary>
         /// By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.
         /// </summary>
-        public static int Problem7Example()
+        public static long Problem7Example()
         {
             return MathHelpers.NthPrime(6);
         }
@@ -159,7 +159,7 @@
         /// <summary>
         /// What is the 10001st prime number?
         /// </summary>
-        public static int Problem7Solution()
+        public static long Problem7Solution()
         {
             return MathHelpers.NthPrime(10001);
         }
@@ -184,7 +184,6 @@
                                             "84580156166097919133875499200524063689912560717606" +
                                             "05886116467109405077541002256983155200055935729725" +
                                             "71636269561882670428252483600823257530420752963450";
-
 
         /// <summary>
         /// The four adjacent digits in the 1000-digit number that have the greatest product are 9 × 9 × 8 × 9 = 5832.
@@ -246,6 +245,11 @@
             }
 
             return 0;
+        }
+
+        public static long Problem10Test()
+        {
+            return MathHelpers.SumOfPrimesBelow(2000000 / 100);
         }
 
         /// <summary>

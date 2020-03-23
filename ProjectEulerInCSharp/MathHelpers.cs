@@ -1,4 +1,4 @@
-﻿namespace ProjectEulerInCSharp
+namespace ProjectEulerInCSharp
 {
     using System;
     using System.Collections.Generic;
@@ -77,7 +77,7 @@
         /// </summary>
         public static List<int> PrimeFactorsOf(long n)
         {
-            return MathHelpers.FactorsOf(n)
+            return FactorsOf(n)
                 .Where(f => f.IsPrime())
                 .ToList();
         }
@@ -85,11 +85,29 @@
         /// <summary>
         /// The nth prime number, counting up from 2.
         /// </summary>
-         public static int NthPrime(int n)
+         public static long NthPrime(int n)
          {
-            var nPrimes = CalculatePrimes(primes => primes.Count() < n);
-            
+            var nPrimes = FirstNPrimes(n);
+
             return nPrimes[n - 1];
+        }
+
+        /// <summary>
+        /// The first n prime numbers, counting up from 2.
+        /// </summary>
+        private static IList<int> FirstNPrimes(int n)
+        {
+            IList<int> primes = null;
+            int max = 10;
+            var count = 0;
+            while (count < n)
+            {
+                max *= 10;
+                primes = PrimesBelowN(max);
+                count = primes.Count;
+            }
+
+            return primes.ToList().GetRange(0, n);
         }
 
         /// <summary>
@@ -108,28 +126,37 @@
         {
             if (below < 2) throw new ArgumentException("below", "too small for primes");
 
-            var primesBelow = CalculatePrimes(primes => primes.Max() < below);
-
-            // re-filter to remove the last prime
-            return primesBelow.Where(p => p < below).Sum();
+            return PrimesBelowN(below).Select(c => (long)c).Sum();
         }
 
-        private static IList<int> CalculatePrimes(Func<IList<int>, bool> whileCondition)
+        /// <summary>
+        /// Get all primes smaller than N
+        /// </summary>
+        private static IList<int> PrimesBelowN(int n)
         {
-            var primes = new List<int>();
-            int candidate = 2;
+            var range = Enumerable.Range(1, n - 1);
 
-            do
+            // Make a lookup of all N integers
+            var isPrimes = range.ToDictionary(i => i, i => true);
+
+            // Switch off 1 (1 is not prime)
+            isPrimes[1] = false;
+
+            // Switch off all multiples of 2, then multiples of 3 etc.
+            for (int f = 2; f < n; ++f)
             {
-                if (primes.Where(p => p < Math.Sqrt(candidate)).All(p => candidate % p != 0))
+                int candidate = 2 * f;
+                while (candidate < n)
                 {
-                    primes.Add(candidate);
+                    isPrimes[candidate] = false;
+                    candidate += f;
                 }
+            }
 
-                candidate++;
-            } while (whileCondition(primes));
-
-            return primes;
+            // Convert the lookup to a list
+            return range
+                .Where(c => isPrimes[c])
+                .ToList();
         }
     }
 }
