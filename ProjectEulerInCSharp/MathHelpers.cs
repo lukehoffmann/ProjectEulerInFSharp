@@ -46,7 +46,7 @@
         /// </summary>
         public static List<int> FactorsOf(int n)
         {
-            return MathHelpers.FactorsOf((long)n);
+            return FactorsOf((long)n);
         }
 
         /// <summary>
@@ -156,21 +156,22 @@
         {
             var range = Enumerable.Range(1, n - 1);
 
-            // Make a lookup of all N integers
+            // Make a lookup of all N integers, pretending they're all prime
             var isPrimes = range.ToDictionary(i => i, i => true);
 
             // Switch off 1 (1 is not prime)
             isPrimes[1] = false;
 
-            // Switch off all multiples of 2, then multiples of 3 etc.
-            for (int f = 2; f < n; ++f)
+            // For every other number...
+            for (int prime = 2; prime < n; ++prime)
             {
-                int candidate = 2 * f;
-                while (candidate < n)
-                {
-                    isPrimes[candidate] = false;
-                    candidate += f;
-                }
+                // (unless we know it's not prime) ...
+                if (!isPrimes[prime])
+                    continue;
+
+                // switch off all of it's multiples
+                for (var multiple = 2 * prime; multiple < n; multiple += prime)
+                    isPrimes[multiple] = false;
             }
 
             // Convert the lookup to a list
