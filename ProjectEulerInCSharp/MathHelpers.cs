@@ -117,14 +117,18 @@
         /// </summary>
         private static IList<int> FirstNPrimes(int n)
         {
-            IList<int> primes = null;
-            int max = 10;
-            var count = 0;
-            while (count < n)
+            IList<int> primes = new List<int>();
+
+            // It's quicker to repeat the 'primes below n' calculation
+            // (of unknown length) than to calculate a known number of
+            // primes once.
+
+            // Take a guess at the highest prime required, then
+            // increase the limit by an order of magnitude until
+            // we have enough
+            for (var max = n * 20; primes.Count < n; max *= 10)
             {
-                max *= 10;
                 primes = PrimesBelowN(max);
-                count = primes.Count;
             }
 
             return primes.ToList().GetRange(0, n);
