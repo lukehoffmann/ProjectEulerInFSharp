@@ -231,11 +231,6 @@ namespace ProjectEulerInCSharp
             return 0;
         }
 
-        public static long Problem10Test()
-        {
-            return MathHelpers.SumOfPrimesBelow(2000000 / 100);
-        }
-
         /// <summary>
         /// The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
         /// Find the sum of all the primes below two million.
@@ -245,7 +240,7 @@ namespace ProjectEulerInCSharp
             return MathHelpers.SumOfPrimesBelow(2000000);
         }
 
-        private int[][] Problem11Data = new int[][]
+        private static int[][] Problem11Data = new int[][]
         {
             new int[] { 08, 02, 22, 97, 38, 15, 00, 40, 00, 75, 04, 05, 07, 78, 52, 12, 50, 77, 91, 08, },
             new int[] { 49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 04, 56, 62, 00, },
@@ -269,11 +264,23 @@ namespace ProjectEulerInCSharp
             new int[] { 01, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 01, 89, 19, 67, 48, },
         };
 
-
-        public static long Problem11Solution()
+        public static long Problem11Example()
         {
             // In the 20×20 grid below, four numbers along a diagonal line have been marked in red.
             // The product of these numbers is 26 × 63 × 78 × 14 = 1788696.
+
+            var product = 1;
+            var x = 8;
+            var y = 6;
+
+            for (var i = 0; i < 4; i++)
+                product *= Problem11Data[y + i][x + i];
+
+            return product;
+        }
+
+        public static long Problem11Solution()
+        {
             // What is the greatest product of four adjacent numbers in the same direction(up,
             // down, left, right, or diagonally) in the 20×20 grid ?
 
