@@ -22,6 +22,7 @@ namespace ProjectEulerTests
         public void RightDownProductTest()
         {
             Assert.AreEqual(08 * 49 * 31 * 23, Problem11.RightDownProduct(1, 1));
+            Assert.AreEqual(39 * 88 * 74 * 92, Problem11.RightDownProduct(7, 17));
         }
 
         [TestMethod]

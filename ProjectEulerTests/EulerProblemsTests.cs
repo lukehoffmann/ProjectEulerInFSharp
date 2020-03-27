@@ -199,7 +199,7 @@ namespace ProjectEulerTests
             var result = EulerProblems.Problem11Solution();
 
             Console.WriteLine($"Problem {11} = {result}");
-            Assert.AreEqual(0, result);
+            Assert.AreEqual(70600674, result);
         }
     }
 }

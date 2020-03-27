@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.CompilerServices;
 
 namespace ProjectEulerInCSharp
@@ -20,9 +20,9 @@ namespace ProjectEulerInCSharp
             new[] { 16, 39, 05, 42, 96, 35, 31, 47, 55, 58, 88, 24, 00, 17, 54, 24, 36, 29, 85, 57 },
             new[] { 86, 56, 00, 48, 35, 71, 89, 07, 05, 44, 44, 37, 44, 60, 21, 58, 51, 54, 17, 58 },
             new[] { 19, 80, 81, 68, 05, 94, 47, 69, 28, 73, 92, 13, 86, 52, 17, 77, 04, 89, 55, 40 },
+            new[] { 04, 52, 08, 83, 97, 35, 99, 16, 07, 97, 57, 32, 16, 26, 26, 79, 33, 27, 98, 66 },
             new[] { 88, 36, 68, 87, 57, 62, 20, 72, 03, 46, 33, 67, 46, 55, 12, 32, 63, 93, 53, 69 },
             new[] { 04, 42, 16, 73, 38, 25, 39, 11, 24, 94, 72, 18, 08, 46, 29, 32, 40, 62, 76, 36 },
-            new[] { 04, 52, 08, 83, 97, 35, 99, 16, 07, 97, 57, 32, 16, 26, 26, 79, 33, 27, 98, 66 },
             new[] { 20, 69, 36, 41, 72, 30, 23, 88, 34, 62, 99, 69, 82, 67, 59, 85, 74, 04, 36, 16 },
             new[] { 20, 73, 35, 29, 78, 31, 90, 01, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 05, 54 },
             new[] { 01, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 01, 89, 19, 67, 48 }
@@ -36,10 +36,17 @@ namespace ProjectEulerInCSharp
             {
                 for (var y = 1; y <= 20; y++)
                 {
-                    if (x + 3 <= 20) max = Math.Max(max, RightProduct(x, y));
-                    if (y + 3 <= 20) max = Math.Max(max, DownProduct(x, y));
-                    if (x + 3 <= 20 && y + 3 <= 20) max = Math.Max(max, RightDownProduct(x, y));
-                    if (x - 3 >= 1 && y + 3 <= 20) max = Math.Max(max, LeftDownProduct(x, y));
+                    if (x + 3 <= 20)
+                        max = Math.Max(max, RightProduct(x, y));
+
+                    if (y + 3 <= 20)
+                        max = Math.Max(max, DownProduct(x, y));
+
+                    if (x + 3 <= 20 && y + 3 <= 20)
+                        max = Math.Max(max, RightDownProduct(x, y));
+
+                    if (x - 3 >= 1 && y + 3 <= 20)
+                        max = Math.Max(max, LeftDownProduct(x, y));
                 }
             }
 
