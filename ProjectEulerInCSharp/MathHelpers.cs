@@ -1,27 +1,27 @@
-﻿namespace ProjectEulerInCSharp
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
+namespace ProjectEulerInCSharp
+{
     public static class MathHelpers
     {
 
         public static List<int> AllProductsOfXDigitNumbers(int xDigits)
         {
-            int start = (int)Math.Pow(10, xDigits - 1); // e.g. when x is 3 > 10^(3 - 1) = 100
-            int end = (int)Math.Pow(10, xDigits) - 1;   // e.g. when x is 3 > (10^3) - 1 = 999
-            int count = end - start + 1;
+            var start = (int)Math.Pow(10, xDigits - 1); // e.g. when x is 3 > 10^(3 - 1) = 100
+            var end = (int)Math.Pow(10, xDigits) - 1;   // e.g. when x is 3 > (10^3) - 1 = 999
+            var count = end - start + 1;
             
-            List<int> range = Enumerable.Range(start, count).ToList();
-            List<int> products = new List<int>();
+            var range = Enumerable.Range(start, count).ToList();
+            var products = new List<int>();
 
             range.ForEach(i => range.ForEach(j => products.Add(i * j)));
 
             return products.Distinct().ToList();
         }
 
-        public static int SmallestMultipleOfAllFactors(IEnumerable<int> factors)
+        public static int SmallestMultipleOfAllFactors(IList<int> factors)
         {
             // Find the non-redundant factors (remove smaller factors of the larger ones)
             var uniqueFactors = factors.Distinct().ToList();
@@ -31,7 +31,7 @@
             // start with the highest common factor
             var highest = uniqueFactors.Max();
 
-            int product = highest;
+            var product = highest;
             do
             {
                 // multiply by this factor until divisible by all others
@@ -54,10 +54,10 @@
         /// </summary>
         public static List<int> FactorsOf(long n)
         {
-            List<int> l = new List<int>();
-            long limit = (long)Math.Sqrt(n) + 1;
+            var l = new List<int>();
+            var limit = (long)Math.Sqrt(n) + 1;
 
-            for (int i = 1; i <= limit; i++)
+            for (var i = 1; i <= limit; i++)
             {
                 if (n.MultipleOf(i))
                 {
@@ -82,7 +82,7 @@
         {
             if (limit < 0) { throw new ArgumentOutOfRangeException("limit", "too negative"); }
 
-            List<int> l = new List<int>() { 1, 2 };
+            var l = new List<int> { 1, 2 };
             do
             {
                 l.Add(l[l.Count - 1] + l[l.Count - 2]);
@@ -140,7 +140,7 @@
         /// </summary>
         public static bool IsPythagoreanTriplet(int a, int b, int c)
         {
-            return Math.Pow(a, 2) + Math.Pow(b, 2) == Math.Pow(c, 2);
+            return Math.Abs(Math.Pow(a, 2) + Math.Pow(b, 2) - Math.Pow(c, 2)) < 1.0e-6;
         }
 
         /// <summary>
@@ -148,7 +148,7 @@
         /// </summary>
         public static long SumOfPrimesBelow(int below)
         {
-            if (below < 2) throw new ArgumentException("below", "too small for primes");
+            if (below < 2) throw new ArgumentException("too small for primes", nameof(below));
 
             return PrimesBelowN(below).Select(c => (long)c).Sum();
         }
@@ -158,7 +158,7 @@
         /// </summary>
         private static IList<int> PrimesBelowN(int n)
         {
-            var range = Enumerable.Range(1, n - 1);
+            var range = Enumerable.Range(1, n - 1).ToList();
 
             // Make a lookup of all N integers, pretending they're all prime
             var isPrimes = range.ToDictionary(i => i, i => true);
@@ -167,7 +167,7 @@
             isPrimes[1] = false;
 
             // For every other number...
-            for (int prime = 2; prime < n; ++prime)
+            for (var prime = 2; prime < n; ++prime)
             {
                 // (unless we know it's not prime) ...
                 if (!isPrimes[prime])

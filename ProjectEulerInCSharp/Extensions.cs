@@ -1,8 +1,8 @@
-﻿namespace ProjectEulerInCSharp
-{
-    using System;
-    using System.Linq;
+﻿using System;
+using System.Linq;
 
+namespace ProjectEulerInCSharp
+{
     public static class Extensions
     {
 
@@ -13,13 +13,16 @@
 
         public static bool IsPalindromic(this int n)
         {
-            return n.ToString().Reverse() == n.ToString();
+            var s1 = n.ToString();
+            return s1 == s1.Reverse();
         }
 
         public static bool IsPrime(this int n)
         {
-            if (n == 0 || n == 1) { return false; }
-            return MathHelpers.FactorsOf(n).Count() == 0;
+            if (n == 0 || n == 1)
+                return false;
+
+            return !MathHelpers.FactorsOf(n).Any();
         }
 
         public static bool MultipleOf(this int n, int factor)
@@ -29,7 +32,6 @@
 
         public static bool MultipleOf(this long n, long factor)
         {
-            //System.Diagnostics.Debug.WriteLine(n + " / " + factor);
             return n % factor == 0;
         }
 
@@ -37,7 +39,7 @@
         {
             if (s == null) return null;
 
-            char[] charArray = s.ToCharArray();
+            var charArray = s.ToCharArray();
             Array.Reverse(charArray);
             return new string(charArray);
         }

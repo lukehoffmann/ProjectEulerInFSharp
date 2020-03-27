@@ -1,9 +1,9 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace ProjectEulerInCSharp
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-
     public class EulerProblems
     {
         /// <summary>
@@ -15,7 +15,7 @@ namespace ProjectEulerInCSharp
             //If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. 
             //The sum of these multiples is 23.
             return Enumerable.Range(0, 10)
-                .Where(i => (i.MultipleOf(3) || i.MultipleOf(5)))
+                .Where(i => i.MultipleOf(3) || i.MultipleOf(5))
                 .Sum();
         }
 
@@ -27,7 +27,7 @@ namespace ProjectEulerInCSharp
             //If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. 
             //The sum of these multiples is 23.
             return Enumerable.Range(0, 1000)
-                .Where(i => (i.MultipleOf(3) || i.MultipleOf(5)))
+                .Where(i => i.MultipleOf(3) || i.MultipleOf(5))
                 .Sum();
         }
 
@@ -83,7 +83,7 @@ namespace ProjectEulerInCSharp
         /// </summary>
         public static int Problem5Example()
         {
-            var factors = Enumerable.Range(1, 10);
+            var factors = Enumerable.Range(1, 10).ToList();
             return MathHelpers.SmallestMultipleOfAllFactors(factors);
         }
 
@@ -92,7 +92,7 @@ namespace ProjectEulerInCSharp
         /// </summary>
         public static int Problem5Solution()
         {
-            var factors = Enumerable.Range(1, 20);
+            var factors = Enumerable.Range(1, 20).ToList();
             return MathHelpers.SmallestMultipleOfAllFactors(factors);
         }
 
@@ -103,12 +103,12 @@ namespace ProjectEulerInCSharp
         /// </summary>
         public static int Problem6Example()
         {
-            int upTo = 10;
+            var upTo = 10;
 
-            int sum = Enumerable.Range(1, upTo).Sum();
-            int squareOfSum = sum * sum;
+            var sum = Enumerable.Range(1, upTo).Sum();
+            var squareOfSum = sum * sum;
 
-            int sumOfSquares = Enumerable.Range(1, upTo)
+            var sumOfSquares = Enumerable.Range(1, upTo)
                                .Select(i => i * i)
                                .Sum();
 
@@ -120,12 +120,12 @@ namespace ProjectEulerInCSharp
         /// </summary>
         public static long Problem6Solution()
         {
-            int upTo = 100;
+            var upTo = 100;
 
-            int sum = Enumerable.Range(1, upTo).Sum();
-            int squareOfSum = sum * sum;
+            var sum = Enumerable.Range(1, upTo).Sum();
+            var squareOfSum = sum * sum;
 
-            int sumOfSquares = Enumerable.Range(1, upTo)
+            var sumOfSquares = Enumerable.Range(1, upTo)
                                .Select(i => i * i)
                                .Sum();
 
@@ -174,13 +174,14 @@ namespace ProjectEulerInCSharp
         /// </summary>
         public static int Problem8Example()
         {
-            string data = Problem8Data;
-            int n = 4, l = data.Length;
-            int max = 0;
+            var data = Problem8Data;
+            const int n = 4;
+            var l = data.Length;
+            var max = 0;
 
-            for (int i = 0; i + n <= l; i++)
+            for (var i = 0; i + n <= l; i++)
             {
-                int product = Enumerable.Range(i, n).Aggregate(1, (j, k) => j * data.DigitAtPosition(k));
+                var product = Enumerable.Range(i, n).Aggregate(1, (j, k) => j * data.DigitAtPosition(k));
                 max = Math.Max(max, product);
             }
 
@@ -192,13 +193,14 @@ namespace ProjectEulerInCSharp
         /// </summary>
         public static long Problem8Solution()
         {
-            string data = Problem8Data;
-            int n = 13, l = data.Length;
+            var data = Problem8Data;
+            const int n = 13;
+            var l = data.Length;
             long max = 0;
 
-            for (int i = 0; i + n <= l; i++)
+            for (var i = 0; i + n <= l; i++)
             {
-                long product = Enumerable.Range(i, n).Aggregate(1L, (j, k) => j * data.DigitAtPosition(k));
+                var product = Enumerable.Range(i, n).Aggregate(1L, (j, k) => j * data.DigitAtPosition(k));
                 max = Math.Max(max, product);
             }
 
@@ -211,13 +213,11 @@ namespace ProjectEulerInCSharp
         /// </summary>
         public static long Problem9Solution()
         {
-            int a, b, c;
-
-            for (a = 1; a < 998; ++a)
+            for (var a = 1; a < 998; ++a)
             {
-                for (b = a; b < 998; ++b)
+                for (var b = a; b < 998; ++b)
                 {
-                    for (c = b; c < 998; ++c)
+                    for (var c = b; c < 998; ++c)
                     {
                         if (a + b + c == 1000
                             && MathHelpers.IsPythagoreanTriplet(a, b, c))

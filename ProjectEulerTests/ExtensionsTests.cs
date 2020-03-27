@@ -1,30 +1,29 @@
-﻿namespace ProjectEulerInCSharp.Tests
-{
-    
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using ProjectEulerInCSharp;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ProjectEulerInCSharp;
 
-    [TestClass()]
+namespace ProjectEulerTests
+{
+    [TestClass]
     public class ExtensionsTests
     {
-        [TestMethod()]
+        [TestMethod]
         public void DigitAtPositionTest()
         {
             var testString = "983475908732";
-            Assert.AreEqual(7, Extensions.DigitAtPosition(testString, 4));
-            Assert.AreEqual(0, Extensions.DigitAtPosition(testString, 7));
-            Assert.AreEqual(8, Extensions.DigitAtPosition(testString, 1));
-            Assert.AreEqual(5, Extensions.DigitAtPosition(testString, 5));
-            Assert.AreEqual(9, Extensions.DigitAtPosition(testString, 6));
-            Assert.AreEqual(7, Extensions.DigitAtPosition(testString, 9));
+            Assert.AreEqual(7, testString.DigitAtPosition(4));
+            Assert.AreEqual(0, testString.DigitAtPosition(7));
+            Assert.AreEqual(8, testString.DigitAtPosition(1));
+            Assert.AreEqual(5, testString.DigitAtPosition(5));
+            Assert.AreEqual(9, testString.DigitAtPosition(6));
+            Assert.AreEqual(7, testString.DigitAtPosition(9));
         }
     
         [TestMethod]
         public void IsPalindromicTest()
         {
-            Assert.IsTrue(((int)(909)).IsPalindromic());
-            Assert.IsTrue(((int)(9009)).IsPalindromic());
-            Assert.IsFalse(((int)(90099)).IsPalindromic());
+            Assert.IsTrue(909.IsPalindromic());
+            Assert.IsTrue(9009.IsPalindromic());
+            Assert.IsFalse(90099.IsPalindromic());
         }
 
         [TestMethod]
