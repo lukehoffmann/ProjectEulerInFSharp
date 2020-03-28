@@ -175,5 +175,14 @@ namespace ProjectEulerTests
             Console.WriteLine($"Problem {12} = {result}");
             Assert.AreEqual(76576500, result);
         }
+
+        [TestMethod]
+        public void Problem13_Solution()
+        {
+            var result = EulerProblems.Problem13Solution();
+
+            Console.WriteLine($"Problem {13} = {result}");
+            Assert.AreEqual("5537376230", result);
+        }
     }
 }

@@ -294,5 +294,12 @@ namespace ProjectEulerInCSharp
             return MathHelpers.FirstTriangleNumberWhere(
                 n => MathHelpers.FactorsOf(n).Count > 500);
         }
+
+        public static string Problem13Solution()
+        {
+            // Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.
+            return Problem13.AddNumbersAsStrings(Problem13.Problem13Data)
+                .Substring(0, 10);
+        }
     }
 }

@@ -1,24 +1,42 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 
 namespace ProjectEulerInCSharp
 {
     public class Problem13
     {
-        public static string AddNumbersAsStrings(params string[] ss)
+        public static string AddNumbersAsStrings(params string[] numbers)
         {
             // find the longest string
-            var digits = ss.Max(s => s.Length);
-            var padded = ss.Select(s => s.PadLeft(digits, '0')).ToArray();
+            var digits = numbers.Max(s => s.Length);
 
-            // add the digits at each position
-            var rv = Enumerable.Range(0, digits)
-                .Select(i => padded.Sum(s => int.Parse(s[i].ToString())));
+            // pad all strings to the same length
+            var paddedNumbers = numbers.Select(s => s.PadLeft(digits, '0')).ToArray();
 
-            return string.Join("", rv);
+            var carryOvers = new long[digits];
+            return Enumerable.Range(0, digits)
+                .Reverse()
+                .Select(i =>
+                {
+                    // add the digits at each position
+                    // this gives us the sum of each column
+                    var sum = paddedNumbers.Sum(s => long.Parse(s[i].ToString()));
+
+                    // include the carry over from the previous column
+                    if (i + 1 < digits)
+                        sum += carryOvers[i + 1];
+
+                    // carrying over multi-digit sums to the next left column
+                    carryOvers[i] += sum / 10;
+
+                    // return the last digit (except we'll allow multi digits in the left-most column)
+                    return i == 0 ? sum : sum % 10;
+                })
+                .Reverse()
+                .Select(l => l.ToString())
+                .Aggregate((s1, s2) => s1 + s2);
         }
 
-        private static readonly string[] Problem13Data =
+        public static readonly string[] Problem13Data =
         {
             "37107287533902102798797998220837590246510135740250",
             "46376937677490009712648124896970078050417018260538",
