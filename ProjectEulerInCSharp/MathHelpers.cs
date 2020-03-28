@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -169,6 +169,29 @@ namespace ProjectEulerInCSharp
             return range
                 .Where(c => isPrimes[c])
                 .ToList();
+        }
+
+        public static IEnumerable<long> TriangleNumbers(long n)
+        {
+            var triangleNumbers = new List<long> {1};
+            for (var i = 2; i <= n; i++)
+            {
+                triangleNumbers.Add(triangleNumbers.Last() + i);
+            }
+
+            return triangleNumbers;
+        }
+
+        public static long FirstTriangleNumberWhere(Func<long, bool> condition)
+        {
+            var i = 1;
+            var t = 0 ;
+            while (true)
+            {
+                t += i++;
+                if (condition(t))
+                    return t;
+            }
         }
     }
 }

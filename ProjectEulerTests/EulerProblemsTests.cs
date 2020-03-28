@@ -160,5 +160,20 @@ namespace ProjectEulerTests
             Console.WriteLine($"Problem {11} = {result}");
             Assert.AreEqual(70600674, result);
         }
+
+        [TestMethod]
+        public void Problem12_Example()
+        {
+            Assert.AreEqual(28, EulerProblems.Problem12Example());
+        }
+
+        [TestMethod]
+        public void Problem12_Solution()
+        {
+            var result = EulerProblems.Problem12Solution();
+
+            Console.WriteLine($"Problem {12} = {result}");
+            Assert.AreEqual(76576500, result);
+        }
     }
 }
