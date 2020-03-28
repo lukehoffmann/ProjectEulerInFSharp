@@ -43,6 +43,7 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="MathHelpers.cs" />
     <Compile Include="Problem11.cs" />
+    <Compile Include="Problem13.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
