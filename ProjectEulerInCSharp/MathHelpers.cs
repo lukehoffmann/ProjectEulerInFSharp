@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -44,31 +44,18 @@ namespace ProjectEulerInCSharp
         /// <summary>
         /// Unordered factors of the given number, including one and the number itself.
         /// </summary>
-        public static List<int> FactorsOf(int n)
+        public static List<long> FactorsOf(long n)
         {
-            return FactorsOf((long)n);
-        }
-
-        /// <summary>
-        /// Unordered factors of the given number, including one and the number itself.
-        /// </summary>
-        public static List<int> FactorsOf(long n)
-        {
-            var l = new List<int>();
+            var factors = new HashSet<long>();
             var limit = (long)Math.Sqrt(n) + 1;
 
             for (var i = 1; i <= limit; i++)
             {
-                if (n.MultipleOf(i))
-                {
-                    l.Add(i);
-                    l.Add((int)(n / i));
-                }
+                if (!n.MultipleOf(i)) continue;
+                factors.Add(i);
+                factors.Add(n / i);
             }
-            l = l.Distinct().ToList();
-            l.Remove(1);
-            l.Remove((int)n);
-            return l;
+            return factors.ToList();
         }
 
         /// <summary>
@@ -95,7 +82,7 @@ namespace ProjectEulerInCSharp
         /// <summary>
         /// An unordered list containing the number's factors that are prime numbers.
         /// </summary>
-        public static List<int> PrimeFactorsOf(long n)
+        public static List<long> PrimeFactorsOf(long n)
         {
             return FactorsOf(n)
                 .Where(f => f.IsPrime())

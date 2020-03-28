@@ -32,19 +32,20 @@ namespace ProjectEulerInCSharp
         }
 
         /// <summary>
-        /// By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
+        /// By considering the terms in the Fibonacci sequence whose values do not exceed four
+        /// million, find the sum of the even-valued terms.
         /// </summary>
         public static int Problem2Solution()
         {
             return MathHelpers.FibonacciNumbersUpTo(4000000)
-                    .Where(f => f.MultipleOf(2))
-                    .Sum();
+                .Where(f => f.MultipleOf(2))
+                .Sum();
         }
 
         /// <summary>
         /// The prime factors of 13195 are 5, 7, 13 and 29.
         /// </summary>
-        public static List<int> Problem3Example()
+        public static List<long> Problem3Example()
         {
             return MathHelpers.PrimeFactorsOf(13195).ToList();
         }
@@ -58,8 +59,8 @@ namespace ProjectEulerInCSharp
         }
 
         /// <summary>
-        /// A palindromic number reads the same both ways. 
-        /// The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
+        /// A palindromic number reads the same both ways. The largest palindrome made from the
+        /// product of two 2-digit numbers is 9009 = 91 × 99.
         /// </summary>
         public static int Problem4Example()
         {
@@ -79,7 +80,8 @@ namespace ProjectEulerInCSharp
         }
 
         /// <summary>
-        /// 2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
+        /// 2520 is the smallest number that can be divided by each of the numbers from 1 to 10
+        /// without any remainder.
         /// </summary>
         public static int Problem5Example()
         {
@@ -88,7 +90,8 @@ namespace ProjectEulerInCSharp
         }
 
         /// <summary>
-        /// What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
+        /// What is the smallest positive number that is evenly divisible by all of the numbers
+        /// from 1 to 20?
         /// </summary>
         public static int Problem5Solution()
         {
@@ -99,7 +102,8 @@ namespace ProjectEulerInCSharp
         /// <summary>
         /// The sum of the squares of the first ten natural numbers is 385
         /// The square of the sum of the first ten natural numbers is 3025
-        /// Hence the difference between the sum of the squares of the first ten natural numbers and the square of the sum is 3025 − 385 = 2640.
+        /// Hence the difference between the sum of the squares of the first ten natural numbers
+        /// and the square of the sum is 3025 − 385 = 2640.
         /// </summary>
         public static int Problem6Example()
         {
@@ -109,14 +113,15 @@ namespace ProjectEulerInCSharp
             var squareOfSum = sum * sum;
 
             var sumOfSquares = Enumerable.Range(1, upTo)
-                               .Select(i => i * i)
-                               .Sum();
+                .Select(i => i * i)
+                .Sum();
 
             return Math.Abs(sumOfSquares - squareOfSum);
         }
 
         /// <summary>
-        /// Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
+        /// Find the difference between the sum of the squares of the first one hundred natural
+        /// numbers and the square of the sum.
         /// </summary>
         public static long Problem6Solution()
         {
@@ -126,14 +131,15 @@ namespace ProjectEulerInCSharp
             var squareOfSum = sum * sum;
 
             var sumOfSquares = Enumerable.Range(1, upTo)
-                               .Select(i => i * i)
-                               .Sum();
+                .Select(i => i * i)
+                .Sum();
 
             return Math.Abs(sumOfSquares - squareOfSum);
         }
 
         /// <summary>
-        /// By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.
+        /// By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the
+        /// 6th prime is 13.
         /// </summary>
         public static long Problem7Example()
         {
@@ -170,7 +176,8 @@ namespace ProjectEulerInCSharp
                                             "71636269561882670428252483600823257530420752963450";
 
         /// <summary>
-        /// The four adjacent digits in the 1000-digit number that have the greatest product are 9 × 9 × 8 × 9 = 5832.
+        /// The four adjacent digits in the 1000-digit number that have the greatest product are
+        /// 9 × 9 × 8 × 9 = 5832.
         /// </summary>
         public static int Problem8Example()
         {
@@ -189,18 +196,21 @@ namespace ProjectEulerInCSharp
         }
 
         /// <summary>
-        /// Find the thirteen adjacent digits in the 1000-digit number that have the greatest product. What is the value of this product?
+        /// Find the thirteen adjacent digits in the 1000-digit number that have the greatest
+        /// product. What is the value of this product?
         /// </summary>
         public static long Problem8Solution()
         {
             var data = Problem8Data;
-            const int n = 13;
             var l = data.Length;
-            long max = 0;
+            const int n = 13;
 
+            long max = 0;
             for (var i = 0; i + n <= l; i++)
             {
-                var product = Enumerable.Range(i, n).Aggregate(1L, (j, k) => j * data.DigitAtPosition(k));
+                var product = Enumerable.Range(i, n)
+                    .Aggregate(1L, (j, k) => j * data.DigitAtPosition(k));
+
                 max = Math.Max(max, product);
             }
 

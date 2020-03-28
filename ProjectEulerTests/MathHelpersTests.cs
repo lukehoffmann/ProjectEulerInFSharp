@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ProjectEulerInCSharp;
@@ -12,28 +12,32 @@ namespace ProjectEulerTests
         [TestMethod]
         public void TestFactorsOf()
         {
-            List<int> result;
+            List<long> result;
 
             result = MathHelpers.FactorsOf(1);
-            Assert.AreEqual(0, result.Count());
-            Assert.IsFalse(result.Contains(1));
+            Assert.AreEqual(1, result.Count);
+            Assert.IsTrue(result.Contains(1));
 
             result = MathHelpers.FactorsOf(2);
-            Assert.AreEqual(0, result.Count());
-            Assert.IsFalse(result.Contains(1));
-            Assert.IsFalse(result.Contains(2));
+            Assert.AreEqual(2, result.Count);
+            Assert.IsTrue(result.Contains(1));
+            Assert.IsTrue(result.Contains(2));
 
             result = MathHelpers.FactorsOf(3);
-            Assert.AreEqual(0, result.Count());
-            Assert.IsFalse(result.Contains(1));
+            Assert.AreEqual(2, result.Count);
+            Assert.IsTrue(result.Contains(1));
             Assert.IsFalse(result.Contains(2));
-            Assert.IsFalse(result.Contains(3));
+            Assert.IsTrue(result.Contains(3));
 
             result = MathHelpers.FactorsOf(12);
-            Assert.AreEqual(4, result.Count());
-            Assert.IsFalse(result.Contains(1));
+            Assert.AreEqual(6, result.Count);
+            Assert.IsTrue(result.Contains(1));
+            Assert.IsTrue(result.Contains(2));
+            Assert.IsTrue(result.Contains(3));
+            Assert.IsTrue(result.Contains(4));
+            Assert.IsFalse(result.Contains(5));
             Assert.IsTrue(result.Contains(6));
-            Assert.IsFalse(result.Contains(12));
+            Assert.IsTrue(result.Contains(12));
 
             result = MathHelpers.FactorsOf(232792560);
         }

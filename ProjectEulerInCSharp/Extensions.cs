@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 
 namespace ProjectEulerInCSharp
 {
@@ -19,10 +18,15 @@ namespace ProjectEulerInCSharp
 
         public static bool IsPrime(this int n)
         {
+            return ((long) n).IsPrime();
+        }
+
+        public static bool IsPrime(this long n)
+        {
             if (n == 0 || n == 1)
                 return false;
 
-            return !MathHelpers.FactorsOf(n).Any();
+            return MathHelpers.FactorsOf(n).Count <= 2;
         }
 
         public static bool MultipleOf(this int n, int factor)
