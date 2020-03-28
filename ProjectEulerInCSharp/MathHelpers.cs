@@ -173,13 +173,16 @@ namespace ProjectEulerInCSharp
 
         public static IEnumerable<long> TriangleNumbers(long n)
         {
-            var triangleNumbers = new List<long> {1};
-            for (var i = 2; i <= n; i++)
+            var rv = new List<long>();
+
+            var x = 0;
+            for (var i = 1; i <= n; i++)
             {
-                triangleNumbers.Add(triangleNumbers.Last() + i);
+                x += i;
+                rv.Add(x);
             }
 
-            return triangleNumbers;
+            return rv;
         }
 
         public static long FirstTriangleNumberWhere(Func<long, bool> condition)
