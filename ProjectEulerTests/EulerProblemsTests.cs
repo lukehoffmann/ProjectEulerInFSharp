@@ -17,19 +17,13 @@ namespace ProjectEulerTests
         [TestMethod]
         public void Problem1_SolutionTest()
         {
-            var result = EulerProblems.Problem1Solution();
-
-            Console.WriteLine($"Problem {1} = {result} ");
-            Assert.AreEqual(233168, result);
+            Assert.AreEqual(233168, EulerProblems.Problem1Solution());
         }
 
         [TestMethod]
         public void Problem2_Solution()
         {
-            var result = EulerProblems.Problem2Solution();
-
-            Console.WriteLine($"Problem {2} = {result}");
-            Assert.AreEqual(4613732, result);
+            Assert.AreEqual(4613732, EulerProblems.Problem2Solution());
         }
 
         [TestMethod]
@@ -47,10 +41,7 @@ namespace ProjectEulerTests
         [TestMethod]
         public void Problem3_Solution()
         {
-            var result = EulerProblems.Problem3Solution();
-
-            Console.WriteLine($"Problem {3} = {result}");
-            Assert.AreEqual(6857, result);
+            Assert.AreEqual(6857, EulerProblems.Problem3Solution());
         }
 
         [TestMethod]
@@ -62,10 +53,7 @@ namespace ProjectEulerTests
         [TestMethod]
         public void Problem4_Solution()
         {
-            var result = EulerProblems.Problem4Solution();
-
-            Console.WriteLine($"Problem {4} = {result}");
-            Assert.AreEqual(906609, result);
+            Assert.AreEqual(906609, EulerProblems.Problem4Solution());
         }
 
         [TestMethod]
@@ -77,10 +65,7 @@ namespace ProjectEulerTests
         [TestMethod]
         public void Problem5_Solution()
         {
-            var result = EulerProblems.Problem5Solution();
-
-            Console.WriteLine($"Problem {5} = {result}");
-            Assert.AreEqual(232792560, result);
+            Assert.AreEqual(232792560, EulerProblems.Problem5Solution());
         }
 
         [TestMethod]
@@ -92,10 +77,7 @@ namespace ProjectEulerTests
         [TestMethod]
         public void Problem6_Solution()
         {
-            var result = EulerProblems.Problem6Solution();
-
-            Console.WriteLine($"Problem {6} = {result}");
-            Assert.AreEqual(25164150, result);
+            Assert.AreEqual(25164150, EulerProblems.Problem6Solution());
         }
 
         [TestMethod]
@@ -107,10 +89,7 @@ namespace ProjectEulerTests
         [TestMethod]
         public void Problem7_Solution()
         {
-            var result = EulerProblems.Problem7Solution();
-
-            Console.WriteLine($"Problem {7} = {result}");
-            Assert.AreEqual(104743, result);
+            Assert.AreEqual(104743, EulerProblems.Problem7Solution());
         }
 
         [TestMethod]
@@ -122,28 +101,19 @@ namespace ProjectEulerTests
         [TestMethod]
         public void Problem8_Solution()
         {
-            var result = EulerProblems.Problem8Solution();
-
-            Console.WriteLine($"Problem {8} = {result}");
-            Assert.AreEqual(23514624000, result);
+            Assert.AreEqual(23514624000, EulerProblems.Problem8Solution());
         }
 
         [TestMethod]
         public void Problem9_Solution()
         {
-            var result = EulerProblems.Problem9Solution();
-
-            Console.WriteLine($"Problem {9} = {result}");
-            Assert.AreEqual(31875000, result);
+            Assert.AreEqual(31875000, EulerProblems.Problem9Solution());
         }
 
         [TestMethod]
         public void Problem10_Solution()
         {
-            var result = EulerProblems.Problem10Solution();
-
-            Console.WriteLine($"Problem {10} = {result}");
-            Assert.AreEqual(142913828922, result);
+            Assert.AreEqual(142913828922, EulerProblems.Problem10Solution());
         }
 
         [TestMethod]
@@ -155,10 +125,7 @@ namespace ProjectEulerTests
         [TestMethod]
         public void Problem11_Solution()
         {
-            var result = EulerProblems.Problem11Solution();
-
-            Console.WriteLine($"Problem {11} = {result}");
-            Assert.AreEqual(70600674, result);
+            Assert.AreEqual(70600674, EulerProblems.Problem11Solution());
         }
 
         [TestMethod]
@@ -170,19 +137,19 @@ namespace ProjectEulerTests
         [TestMethod]
         public void Problem12_Solution()
         {
-            var result = EulerProblems.Problem12Solution();
-
-            Console.WriteLine($"Problem {12} = {result}");
-            Assert.AreEqual(76576500, result);
+            Assert.AreEqual(76576500, EulerProblems.Problem12Solution());
         }
 
         [TestMethod]
         public void Problem13_Solution()
         {
-            var result = EulerProblems.Problem13Solution();
+            Assert.AreEqual("5537376230", EulerProblems.Problem13Solution());
+        }
 
-            Console.WriteLine($"Problem {13} = {result}");
-            Assert.AreEqual("5537376230", result);
+        [TestMethod]
+        public void Problem14_Solution()
+        {
+            Assert.AreEqual(837799, EulerProblems.Problem14Solution());
         }
     }
 }

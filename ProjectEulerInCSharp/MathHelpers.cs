@@ -11,6 +11,11 @@ namespace ProjectEulerInCSharp
             return n % 2 == 0;
         }
 
+        public static bool IsEven(this long n)
+        {
+            return n % 2 == 0;
+        }
+
         public static List<int> AllProductsOfXDigitNumbers(int xDigits)
         {
             var start = (int)Math.Pow(10, xDigits - 1); // e.g. when x is 3 > 10^(3 - 1) = 100

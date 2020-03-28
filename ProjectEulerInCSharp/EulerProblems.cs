@@ -301,5 +301,25 @@ namespace ProjectEulerInCSharp
             return Problem13.AddNumbersAsStrings(Problem13.Problem13Data)
                 .Substring(0, 10);
         }
+
+        public static long Problem14Solution()
+        {
+            // Which starting number, under one million, produces the longest chain?
+            //
+            // NOTE: Once the chain starts the terms are allowed to go above one million.
+            long maxLength = 0;
+            long maxI = 0;
+            var collatz = new Collatz();
+            for (long i = 1; i < 1.0e6; i++)
+            {
+                var length = collatz.SequenceLength(i);
+                if (length > maxLength)
+                {
+                    maxLength = length;
+                    maxI = i;
+                }
+            }
+            return maxI;
+        }
     }
 }
