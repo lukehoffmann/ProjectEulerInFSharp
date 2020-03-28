@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ProjectEulerInCSharp
 {
@@ -17,15 +13,14 @@ namespace ProjectEulerInCSharp
         // numbers finish at 1.
         public static IEnumerable<int> Sequence(int n)
         {
-            var rv = new List<int> {n};
+            yield return n;
             while (n > 1)
             {
-                n = n % 2 == 0
-                    ? n / 2
-                    : 3 * n + 1;
-                rv.Add(n);
+                yield return n =
+                    n.IsEven()
+                        ? n / 2
+                        : 3 * n + 1;
             }
-            return rv;
         }
 
         // Which starting number, under one million, produces the longest chain?

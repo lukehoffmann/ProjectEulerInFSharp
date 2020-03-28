@@ -6,6 +6,10 @@ namespace ProjectEulerInCSharp
 {
     public static class MathHelpers
     {
+        public static bool IsEven(this int n)
+        {
+            return n % 2 == 0;
+        }
 
         public static List<int> AllProductsOfXDigitNumbers(int xDigits)
         {
@@ -65,28 +69,30 @@ namespace ProjectEulerInCSharp
         ///Return a list of all Fibonacci terms less that the given limit.
         /// </summary>
         /// <returns>An ordered collection containing part of the Fibonacci sequence.</returns>
-        public static List<int> FibonacciNumbersUpTo(int limit)
+        public static IEnumerable<int> FibonacciNumbersUpTo(int limit)
         {
-            if (limit < 0) { throw new ArgumentOutOfRangeException("limit", "too negative"); }
+            if (limit < 0) { throw new ArgumentOutOfRangeException(nameof(limit), "too negative"); }
 
-            var l = new List<int> { 1, 2 };
+            int a;
+            int b;
+            yield return a = 1;
+            yield return b = 2;
             do
             {
-                l.Add(l[l.Count - 1] + l[l.Count - 2]);
+                var sum = a + b;
+                a = b;
+                yield return b = sum;
 
-            } while (l[l.Count - 1] <= limit);
-
-            return l;
+            } while (b <= limit);
         }
 
         /// <summary>
         /// An unordered list containing the number's factors that are prime numbers.
         /// </summary>
-        public static List<long> PrimeFactorsOf(long n)
+        public static IEnumerable<long> PrimeFactorsOf(long n)
         {
             return FactorsOf(n)
-                .Where(f => f.IsPrime())
-                .ToList();
+                .Where(f => f.IsPrime());
         }
 
         /// <summary>
@@ -173,16 +179,11 @@ namespace ProjectEulerInCSharp
 
         public static IEnumerable<long> TriangleNumbers(long n)
         {
-            var rv = new List<long>();
-
             var x = 0;
             for (var i = 1; i <= n; i++)
             {
-                x += i;
-                rv.Add(x);
+                yield return x += i;
             }
-
-            return rv;
         }
 
         public static long FirstTriangleNumberWhere(Func<long, bool> condition)
