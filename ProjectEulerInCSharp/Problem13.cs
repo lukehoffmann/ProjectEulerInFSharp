@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Text;
 
 namespace ProjectEulerInCSharp
 {
@@ -12,28 +13,31 @@ namespace ProjectEulerInCSharp
             // pad all strings to the same length
             var paddedNumbers = numbers.Select(s => s.PadLeft(digits, '0')).ToArray();
 
-            var carryOvers = new long[digits];
-            return Enumerable.Range(0, digits)
+            var rv = new StringBuilder();
+            long carryOver = 0;
+
+            // move through the columns right to left
+            Enumerable.Range(0, digits)
                 .Reverse()
-                .Select(i =>
+                .ToList()
+                .ForEach(i =>
                 {
-                    // add the digits at each position
-                    // this gives us the sum of each column
-                    var sum = paddedNumbers.Sum(s => long.Parse(s[i].ToString()));
+                    // take the sum of the digits at this position, and the
+                    // carry-over from the previous column
+                    var sum = paddedNumbers.Sum(s => long.Parse(s[i].ToString()))
+                              + carryOver;
 
-                    // include the carry over from the previous column
-                    if (i + 1 < digits)
-                        sum += carryOvers[i + 1];
+                    // use the last digit of this sum
+                    rv.Insert(0, sum % 10);
 
-                    // carrying over multi-digit sums to the next left column
-                    carryOvers[i] += sum / 10;
+                    // carry over other digits to the next left column
+                    carryOver = sum / 10;
+                });
 
-                    // return the last digit (except we'll allow multi digits in the left-most column)
-                    return i == 0 ? sum : sum % 10;
-                })
-                .Reverse()
-                .Select(l => l.ToString())
-                .Aggregate((s1, s2) => s1 + s2);
+            if (carryOver > 0)
+                rv.Insert(0, carryOver);
+
+            return rv.ToString();
         }
 
         public static readonly string[] Problem13Data =
