@@ -2,6 +2,7 @@ namespace ProjectEulerTests_FSharp
 
 open Microsoft.VisualStudio.TestTools.UnitTesting;
 open ProjectEulerInCSharp;
+open ProjectEulerInFSharp;
 
 [<TestClass>]
 type EulerProblemsTests () = 
@@ -9,19 +10,19 @@ type EulerProblemsTests () =
     [<TestMethod>]
     member this.Problem1_ExampleTest() =
         
-        Assert.AreEqual(23, EulerProblems.Problem1Example());
+        Assert.AreEqual(23, Solutions.Problem1Example());
         
 
     [<TestMethod>]
     member this.Problem1_SolutionTest() =
         
-        Assert.AreEqual(233168, EulerProblems.Problem1Solution());
+        Assert.AreEqual(233168, Solutions.Problem1Solution());
         
 
     [<TestMethod>]
     member this.Problem2_Solution() =
         
-        Assert.AreEqual(4613732, EulerProblems.Problem2Solution());
+        Assert.AreEqual(4613732, Solutions.Problem2Solution());
         
 
     [<TestMethod>]

@@ -29,6 +29,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ProjectEulerInCSharp\ProjectEulerInCSharp.csproj" />
+    <ProjectReference Include="..\ProjectEulerInFSharp\ProjectEulerInFSharp.fsproj" />
   </ItemGroup>
 
   <ItemGroup>
