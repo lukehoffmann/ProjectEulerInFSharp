@@ -13,25 +13,26 @@ module Extensions =
     member this.DividesBy (factor) = this % factor = 0L;
     end
 
+    type String with
+    member self.Characters() = 
+        StringInfo.ParseCombiningCharacters(self)
+        |> Seq.map (fun i -> StringInfo.GetNextTextElement(self, i))
+    end
+
     type Int32 with
     member this.Digits =
-        let s = this.ToString();
-        StringInfo.ParseCombiningCharacters(s)
-        |> Seq.map (fun i -> StringInfo.GetNextTextElement(s, i))
+        this.ToString().Characters()
         |> Seq.map int
     end
 
     type Numerics.BigInteger with
     member this.Digits =
-        let s = this.ToString();
-        StringInfo.ParseCombiningCharacters(s)
-        |> Seq.map (fun i -> StringInfo.GetNextTextElement(s, i))
+        this.ToString().Characters()
         |> Seq.map int
     end
 
     type String with
     member self.Reverse() = 
-        StringInfo.ParseCombiningCharacters(self)
-        |> Seq.map (fun i -> StringInfo.GetNextTextElement(self, i))
+        self.Characters()
         |> Seq.fold (fun acc s -> s + acc ) ""
     end

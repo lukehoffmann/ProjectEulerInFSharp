@@ -4,7 +4,6 @@ open System.Linq;
 open Microsoft.VisualStudio.TestTools.UnitTesting;
 open ProjectEulerInCSharp;
 
-
 [<TestClass>]
 type CollatzTests () =
 

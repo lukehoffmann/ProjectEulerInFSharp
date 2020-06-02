@@ -126,7 +126,6 @@ type EulerProblemsTests () =
     [<TestMethod>]
     member this.Problem13_Solution() =
         Assert.AreEqual("5537376230", EulerProblems.Problem13Solution());
-        
 
     [<TestMethod>]
     member this.Problem14_Solution() =
@@ -160,3 +159,7 @@ type EulerProblemsTests () =
     [<TestMethod>]
     member this.Problem20_Solution() =
         Assert.AreEqual(648, Solutions.Problem20Solution())
+
+    [<TestMethod>]
+    member this.Problem22_Solution() =
+        Assert.AreEqual(871198282, Solutions.Problem22Solution())

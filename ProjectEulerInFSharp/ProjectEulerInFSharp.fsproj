@@ -5,10 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Extensions.fs" />
-    <Compile Include="Math.fs" />
-    <Compile Include="LatticeTraverser.fs" />
-    <Compile Include="NumberLetterCounter.fs" />
+    <Content Include="Data\p022_names.txt" />
+    <Compile Include="General\Extensions.fs" />
+    <Compile Include="General\Math.fs" />
+    <Compile Include="ProblemSpecific\FileScorer.fs" />
+    <Compile Include="ProblemSpecific\LatticeTraverser.fs" />
+    <Compile Include="ProblemSpecific\NumberLetterCounter.fs" />
     <Compile Include="Solutions.fs" />
   </ItemGroup>
 

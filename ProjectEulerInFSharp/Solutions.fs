@@ -93,3 +93,6 @@ module Solutions =
         |> List.reduce (*)
         ).Digits
         |> Seq.sum
+
+    let Problem22Solution () =
+        (new FileScorer()).TotalScoreForAllNames()
