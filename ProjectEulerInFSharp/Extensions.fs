@@ -12,7 +12,15 @@ module Extensions =
     type Int64 with
     member this.DividesBy (factor) = this % factor = 0L;
     end
-    
+
+    type Int32 with
+    member this.Digits =
+        let s = this.ToString();
+        StringInfo.ParseCombiningCharacters(s)
+        |> Seq.map (fun i -> StringInfo.GetNextTextElement(s, i))
+        |> Seq.map int
+    end
+
     type Numerics.BigInteger with
     member this.Digits =
         let s = this.ToString();
