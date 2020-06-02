@@ -47,48 +47,36 @@ module Solutions =
             |> Seq.filter (fun n -> IsPrime n)
             |> Seq.max
 
-    /// <summary>
     /// A palindromic number reads the same both ways. The largest palindrome made from the
     /// product of two 2-digit numbers is 9009 = 91 × 99.
-    /// </summary>
     let Problem4Example () =
         AllProductsOfXDigitNumbers(2)
             |> Seq.filter IsPalindromic
             |> Seq.max
 
-    /// <summary>
     /// Find the largest palindrome made from the product of two 3-digit numbers.
-    /// </summary>
     let Problem4Solution () =
         AllProductsOfXDigitNumbers(3)
             |> Seq.filter IsPalindromic
             |> Seq.max
 
-    /// <summary>
     /// 2520 is the smallest number that can be divided by each of the numbers from 1 to 10
     /// without any remainder.
-    /// </summary>
     let Problem5Example() =
         SmallestMultipleOf [1..10];
 
-    /// <summary>
     /// What is the smallest positive number that is evenly divisible by all of the numbers
     /// 1 to 20
-    /// </summary>
     let Problem5Solution () =
         SmallestMultipleOf [1..20];
 
-    /// <summary>
     /// 2^15 = 32768 and the sum of its digits is 3 + 2 + 7 + 6 + 8 = 26.
-    /// </summary>
     let Problem16Example () =
         (pown 2I 15)
             .Digits
             |> Seq.sum;
 
-    /// <summary>
     /// What is the sum of the digits of the number 2^1000?
-    /// </summary>
     let Problem16Solution () =
         (pown 2I 1000)
             .Digits
@@ -98,3 +86,10 @@ module Solutions =
         [1 .. 1000]
            |> Seq.map NumberLetterCounter.LettersNeededToSpell
            |> Seq.sum
+
+    // Find the sum of the digits in the number 100!
+    let Problem20Solution () =
+        ([1I..100I]
+        |> List.reduce (*)
+        ).Digits
+        |> Seq.sum
