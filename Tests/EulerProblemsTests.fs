@@ -10,37 +10,37 @@ type EulerProblemsTests () =
     [<TestMethod>]
     member this.Problem1_ExampleTest() =
         
-        Assert.AreEqual(23, Solutions.Problem1Example());
+        Assert.AreEqual(23, Solutions.Problem1Example())
         
 
     [<TestMethod>]
     member this.Problem1_SolutionTest() =
         
-        Assert.AreEqual(233168, Solutions.Problem1Solution());
+        Assert.AreEqual(233168, Solutions.Problem1Solution())
         
 
     [<TestMethod>]
     member this.Problem2_Solution() =
         
-        Assert.AreEqual(4613732, Solutions.Problem2Solution());
+        Assert.AreEqual(4613732, Solutions.Problem2Solution())
         
 
     [<TestMethod>]
     member this.Problem3_Example() =
-        
-        let result = EulerProblems.Problem3Example();
 
-        Assert.AreEqual(4, result.Count);
-        Assert.IsTrue(result.Contains(5L));
-        Assert.IsTrue(result.Contains(7L));
-        Assert.IsTrue(result.Contains(13L));
-        Assert.IsTrue(result.Contains(29L));
+        let result = Solutions.Problem3Example()
+
+        Assert.IsTrue (List.contains 5L result)
+        Assert.IsTrue (List.contains 7L result)
+        Assert.IsTrue (List.contains 13L result)
+        Assert.IsTrue (List.contains 29L result)
+        Assert.AreEqual (4, result.Length);
         
 
     [<TestMethod>]
     member this.Problem3_Solution() =
         
-        Assert.AreEqual(6857L, EulerProblems.Problem3Solution());
+        Assert.AreEqual(6857L, Solutions.Problem3Solution());
         
 
     [<TestMethod>]

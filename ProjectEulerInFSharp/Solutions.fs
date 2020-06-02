@@ -37,7 +37,16 @@ module Solutions =
 
 
     // The prime factors of 13195 are 5, 7, 13 and 29.
-
+    let Problem3Example () =
+        let limit = (13195L + 1L) / 2L
+        PrimesUpTo limit 
+        |> Seq.toList
+        |> List.filter (fun n -> 13195L |> DividesBy n)
 
     // What is the largest prime factor of the number 600851475143 ?
-        
+    let Problem3Solution () =
+        let x = BigInteger 600851475143
+        let limit = sqrt x
+        [0L..limit]
+        |> Seq.filter (fun n -> x |> DividesBy n)
+        |> Seq.max
