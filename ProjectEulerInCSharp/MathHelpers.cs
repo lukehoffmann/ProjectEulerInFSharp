@@ -6,40 +6,6 @@ namespace ProjectEulerInCSharp
 {
     public static class MathHelpers
     {
-        public static List<int> AllProductsOfXDigitNumbers(int xDigits)
-        {
-            var start = (int)Math.Pow(10, xDigits - 1); // e.g. when x is 3 > 10^(3 - 1) = 100
-            var end = (int)Math.Pow(10, xDigits) - 1;   // e.g. when x is 3 > (10^3) - 1 = 999
-            var count = end - start + 1;
-            
-            var range = Enumerable.Range(start, count).ToList();
-            var products = new List<int>();
-
-            range.ForEach(i => range.ForEach(j => products.Add(i * j)));
-
-            return products.Distinct().ToList();
-        }
-
-        public static int SmallestMultipleOfAllFactors(IList<int> factors)
-        {
-            // Find the non-redundant factors (remove smaller factors of the larger ones)
-            var uniqueFactors = factors.Distinct().ToList();
-            foreach (var f1 in factors)
-                uniqueFactors.RemoveAll(f2 => f1 > f2 && f1 % f2 == 0);
-
-            // start with the highest common factor
-            var highest = uniqueFactors.Max();
-
-            var product = highest;
-            do
-            {
-                // multiply by this factor until divisible by all others
-                product += highest;
-            } while (uniqueFactors.Any(factor => !product.IsMultipleOf(factor)));
-
-            return product;
-        }
-
         /// <summary>
         /// Unordered factors of the given number, including one and the number itself.
         /// </summary>

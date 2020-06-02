@@ -1,31 +1,10 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace ProjectEulerInCSharp
 {
     public class EulerProblems
     {
-        /// <summary>
-        /// 2520 is the smallest number that can be divided by each of the numbers from 1 to 10
-        /// without any remainder.
-        /// </summary>
-        public static int Problem5Example()
-        {
-            var factors = Enumerable.Range(1, 10).ToList();
-            return MathHelpers.SmallestMultipleOfAllFactors(factors);
-        }
-
-        /// <summary>
-        /// What is the smallest positive number that is evenly divisible by all of the numbers
-        /// from 1 to 20?
-        /// </summary>
-        public static int Problem5Solution()
-        {
-            var factors = Enumerable.Range(1, 20).ToList();
-            return MathHelpers.SmallestMultipleOfAllFactors(factors);
-        }
-
         /// <summary>
         /// The sum of the squares of the first ten natural numbers is 385
         /// The square of the sum of the first ten natural numbers is 3025

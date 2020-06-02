@@ -9,62 +9,48 @@ type EulerProblemsTests () =
 
     [<TestMethod>]
     member this.Problem1_ExampleTest() =
-        
         Assert.AreEqual(23, Solutions.Problem1Example())
-        
 
     [<TestMethod>]
     member this.Problem1_SolutionTest() =
-        
         Assert.AreEqual(233168, Solutions.Problem1Solution())
-        
 
     [<TestMethod>]
     member this.Problem2_Solution() =
-        
         Assert.AreEqual(4613732, Solutions.Problem2Solution())
-        
 
     [<TestMethod>]
     member this.Problem3_Example() =
-
-        let result = Solutions.Problem3Example()
+        let result = Seq.toList(Solutions.Problem3Example())
 
         Assert.IsTrue (List.contains 5L result)
         Assert.IsTrue (List.contains 7L result)
         Assert.IsTrue (List.contains 13L result)
         Assert.IsTrue (List.contains 29L result)
         Assert.AreEqual (4, result.Length);
-        
 
     [<TestMethod>]
     member this.Problem3_Solution() =
-        
         Assert.AreEqual(6857L, Solutions.Problem3Solution());
-        
 
     [<TestMethod>]
     member this.Problem4_Example() =
-        
         Assert.AreEqual(9009, Solutions.Problem4Example());
-        
 
     [<TestMethod>]
     member this.Problem4_Solution() =
-        
         Assert.AreEqual(906609, Solutions.Problem4Solution());
-        
 
     [<TestMethod>]
     member this.Problem5_Example() =
         
-        Assert.AreEqual(2520, EulerProblems.Problem5Example());
+        Assert.AreEqual(2520, Solutions.Problem5Example());
         
 
     [<TestMethod>]
     member this.Problem5_Solution() =
         
-        Assert.AreEqual(232792560, EulerProblems.Problem5Solution());
+        Assert.AreEqual(232792560, Solutions.Problem5Solution());
         
 
     [<TestMethod>]
@@ -154,8 +140,16 @@ type EulerProblemsTests () =
         Assert.AreEqual(20L, LatticeTraverser.countPaths(3))
 
     [<TestMethod>]
+    [<Ignore>] // Too Slow
     member this.Problem15_Solution() =
         // How many such routes are there through a 20×20 grid?
         Assert.AreEqual(137846528820L, LatticeTraverser.countPaths(20))
     
+    [<TestMethod>]
+    member this.Problem16_Example() =
+        Assert.AreEqual(26, Solutions.Problem16Example())
+
+    [<TestMethod>]
+    member this.Problem16_Solution() =
+        Assert.AreEqual(1366, Solutions.Problem16Solution())
 

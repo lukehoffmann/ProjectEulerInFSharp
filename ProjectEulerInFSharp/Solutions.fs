@@ -1,5 +1,7 @@
 ﻿namespace ProjectEulerInFSharp
 
+open System
+open System.Globalization
 open Math
 open Extensions
 
@@ -37,17 +39,13 @@ module Solutions =
 
     // The prime factors of 13195 are 5, 7, 13 and 29.
     let Problem3Example () =
-        let limit = (13195L + 1L) / 2L
-        PrimesUpTo limit 
-        |> Seq.toList
-        |> List.filter (fun n -> 13195L |> DividesBy n)
+        FactorsOf(13195L)
+        |> Seq.filter IsPrime
 
     // What is the largest prime factor of the number 600851475143 ?
     let Problem3Solution () =
-        let x = 600851475143L
-        let limit = sqrt (float x)
-        [0L..int64 limit]
-        |> Seq.filter (fun n -> x |> DividesBy n)
+        FactorsOf(600851475143L)
+        |> Seq.filter (fun n -> IsPrime n)
         |> Seq.max
 
     /// <summary>
@@ -59,10 +57,40 @@ module Solutions =
         |> Seq.filter IsPalindromic
         |> Seq.max
 
-        /// <summary>
-        /// Find the largest palindrome made from the product of two 3-digit numbers.
-        /// </summary>
+    /// <summary>
+    /// Find the largest palindrome made from the product of two 3-digit numbers.
+    /// </summary>
     let Problem4Solution () =
         AllProductsOfXDigitNumbers(3)
         |> Seq.filter IsPalindromic
         |> Seq.max
+
+    /// <summary>
+    /// 2520 is the smallest number that can be divided by each of the numbers from 1 to 10
+    /// without any remainder.
+    /// </summary>
+    let Problem5Example() =
+        SmallestMultipleOf [1..10];
+
+    /// <summary>
+    /// What is the smallest positive number that is evenly divisible by all of the numbers
+    /// 1 to 20
+    /// </summary>
+    let Problem5Solution () =
+        SmallestMultipleOf [1..20];
+
+    /// <summary>
+    /// 2^15 = 32768 and the sum of its digits is 3 + 2 + 7 + 6 + 8 = 26.
+    /// </summary>
+    let Problem16Example () =
+        let n = pown 2I 15
+        n.Digits
+        |> Seq.sum;
+
+    /// <summary>
+    /// What is the sum of the digits of the number 2^1000?
+    /// </summary>
+    let Problem16Solution () =
+        let n = pown 2I 1000
+        n.Digits
+        |> Seq.sum;
