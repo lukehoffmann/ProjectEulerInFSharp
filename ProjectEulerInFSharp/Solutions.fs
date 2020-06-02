@@ -5,7 +5,6 @@ open Extensions
 
 module Solutions =
 
-
     // If we list all the natural numbers below 10 that are
     // multiples of 3 or 5, we get 3, 5, 6 and 9. The sum
     // of these multiples is 23.
@@ -45,8 +44,25 @@ module Solutions =
 
     // What is the largest prime factor of the number 600851475143 ?
     let Problem3Solution () =
-        let x = BigInteger 600851475143
-        let limit = sqrt x
-        [0L..limit]
+        let x = 600851475143L
+        let limit = sqrt (float x)
+        [0L..int64 limit]
         |> Seq.filter (fun n -> x |> DividesBy n)
+        |> Seq.max
+
+    /// <summary>
+    /// A palindromic number reads the same both ways. The largest palindrome made from the
+    /// product of two 2-digit numbers is 9009 = 91 × 99.
+    /// </summary>
+    let Problem4Example () =
+        AllProductsOfXDigitNumbers(2)
+        |> Seq.filter IsPalindromic
+        |> Seq.max
+
+        /// <summary>
+        /// Find the largest palindrome made from the product of two 3-digit numbers.
+        /// </summary>
+    let Problem4Solution () =
+        AllProductsOfXDigitNumbers(3)
+        |> Seq.filter IsPalindromic
         |> Seq.max
