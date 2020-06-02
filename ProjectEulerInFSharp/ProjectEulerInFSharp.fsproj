@@ -8,6 +8,7 @@
     <Compile Include="Extensions.fs" />
     <Compile Include="Math.fs" />
     <Compile Include="Solutions.fs" />
+    <Compile Include="LatticeTraverser.fs" />
   </ItemGroup>
 
 </Project>

@@ -149,6 +149,17 @@ type EulerProblemsTests () =
     member this.Problem14_Solution() =
         
         Assert.AreEqual(837799L, EulerProblems.Problem14Solution());
-        
+
+    [<TestMethod>]
+    member this.Problem15_Example() =
+        // Starting in the top left corner of a 2×2 grid, and only being able to move to the right and down,
+        // there are exactly 6 routes to the bottom right corner.
+        Assert.AreEqual(6L, LatticeTraverser.countPaths(2))
+        Assert.AreEqual(20L, LatticeTraverser.countPaths(3))
+
+    [<TestMethod>]
+    member this.Problem15_Solution() =
+        // How many such routes are there through a 20×20 grid?
+        Assert.AreEqual(137846528820L, LatticeTraverser.countPaths(20))
     
 
